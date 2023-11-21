@@ -18,38 +18,34 @@
     el estado en el que se encuentre por ejemplo puede estar en “enviado”, 
     “recibido”, “transito” etc.
 
-## SOLUCION
-    Personal {CLASE I}                                      CLASE I = Clase Padre ; Clase II = Clase Hijo I ; Clase III = Clase Hija II
-        - Vendedores {CLASE II}            {Encargado de: Venta de Producto, Envio de Producto}
-        - Compradores {CLASE II}           {Encargado de: Compra de Producto}
-        - Consultores {CLASE II}           {Obser. de Producto}
-        - Administradores {CLASE  III}     {Encargado de administrar : producto, personal, ganancias}  
+## SOLUCION    
+                                          CLASE I = Clase Padre ; Clase II = Clase Hijo I ; Clase III = Clase Hija II
+    Persona {CLASE I}                           [Nombre, Apellido, Identidad, Telefono, Correo]
+        - Personal {CLASE II}                   [Num_Empleado, Salario]
+            - Vendedores {CLASE III}            []{Encargado de: Venta de Producto, Envio de Producto}
+            - Compradores {CLASE III}           []{Encargado de: Compra de Producto}
+            - Consultores {CLASE III}           []{Obser. de Producto}
+            - Administradores {CLASE  IV}       []{Encargado de administrar : producto, personal, ganancias}  
     
-    Producto {CLASE I}
-        -Televisores {Clase II}
-        -Lavadoras   {Clase II}
-        -Refrigeradores {Clase II}
-        -Celulares {Clase II}
-
-    Empresa {CLASE I} 
-        ACCESO LOS ADMINISTRADORES
-        - Empleados: Lista
-        - Productos: Lista
-        - Ordenes: Lista
-        - Facturas: Lista
+        - Cliente {Clase II}
         
-        Orden = {}
-
-        -Add_Empleado()
-        -Add_Producto()
-        -Orden_Compra()
-        -Generar_Factura()
+    Producto {CLASE I}                          [Costo, Existencia]
+        -Hamburguesa {Clase II}                 []
+        -Pizza   {Clase II}                     []
+        -Pastel {Clase II}                      []
+        -Spaguetti {Clase II}                   []
 
     Factura {CLASE I} 
         - id: int        
         - fecha: Date    
         - estado: Str 
         - Domicilio: Boolean
+     
+    Compra {CLASE I}
+        - id: int
+        - fecha: Date
+        - estado: Str
+      
              
         
     Structure of Class
