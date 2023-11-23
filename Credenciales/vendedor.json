@@ -1,40 +1,43 @@
 {
     "users" : [
 
-    {"nombre" : "Alvin", 
-    "apellido": "Seville",
-    "identidad": "0801",
-    "telefono": "33889900",
-    "correo": "AlvinSeville@gmail.com",
-    "numEmpleado": "Emp1",
-    "password" : "password1",
-    "salario": "",
-    "metas_ventas": "",
-    "ventas_netas": ""
+    {
+        "nombre" : "Alvin", 
+        "apellido": "Seville",
+        "identidad": "0801",
+        "telefono": "33889900",
+        "correo": "AlvinSeville@gmail.com",
+        "numEmpleado": "Emp1",
+        "password" : "password1",
+        "salario": "",
+        "metas_ventas": "",
+        "ventas_netas": ""
     }, 
 
-    {"nombre" : "Simon", 
-    "apellido": "Seville",
-    "identidad": "0701",
-    "telefono": "391281231",
-    "correo": "SimonSeville@gmail.com",
-    "numEmpleado": "Emp2",
-    "password" : "password2",
-    "salario": "",
-    "metas_ventas": "",
-    "ventas_netas": ""
+    {
+        "nombre" : "Simon", 
+        "apellido": "Seville",
+        "identidad": "0701",
+        "telefono": "391281231",
+        "correo": "SimonSeville@gmail.com",
+        "numEmpleado": "Emp2",
+        "password" : "password2",
+        "salario": "",
+        "metas_ventas": "",
+        "ventas_netas": ""
     },
     
-    {"nombre" : "Teodoro", 
-    "apellido": "Seville",
-    "identidad": "0601",
-    "telefono": "93849084",
-    "correo": "TeodoroSeville@gmail.com",
-    "numEmpleado": "Emp3",
-    "password" : "password3",
-    "salario": "",
-    "metas_ventas": "",
-    "ventas_netas": ""
+    {
+        "nombre" : "Teodoro", 
+        "apellido": "Seville",
+        "identidad": "0601",
+        "telefono": "93849084",
+        "correo": "TeodoroSeville@gmail.com",
+        "numEmpleado": "Emp3",
+        "password" : "password3",
+        "salario": "",
+        "metas_ventas": "",
+        "ventas_netas": ""
     }
      
     ]

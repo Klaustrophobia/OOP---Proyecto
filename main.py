@@ -20,7 +20,8 @@ def main():
             case 1:
                 pass
             case 2:
-                login_vendedor.login()  #Manda a llamar el metodo dentro de la class Login
+                if login_vendedor.login():
+                    pass
             case 3: 
                 pass
             case 4:
