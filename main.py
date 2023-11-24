@@ -20,8 +20,7 @@ def main():
             case 1:
                 pass
             case 2:
-                if login_vendedor.login():
-                    pass
+                login_vendedor.login()
             case 3: 
                 pass
             case 4:

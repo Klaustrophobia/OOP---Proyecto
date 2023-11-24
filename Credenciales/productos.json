@@ -67,6 +67,35 @@
             "espesor": "Grueso",
             "cierre": "No"
         }
+    ],
+    "otrosProductos" : [
+        {
+            "codigo": "G001",
+            "marca": "MarcaG1",
+            "material": "Jean",
+            "costo": 39.99,
+            "existencia": 20,
+            "tamano": "L"
+            
+        },
+        {
+            "codigo": "G002",
+            "marca": "MarcaG2",
+            "material": "Cashmere",
+            "costo": 89.99,
+            "existencia": 15,
+            "tamano": "S"
+            
+        },
+        {
+            "codigo": "G003",
+            "marca": "MarcaG3",
+            "material": "Alpaca",
+            "costo": 55.99,
+            "existencia": 30,
+            "tamano": "XL"
+            
+        }
     ]
 
 }

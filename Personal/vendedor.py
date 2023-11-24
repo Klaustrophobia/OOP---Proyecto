@@ -21,7 +21,8 @@ class Login():
     def verificar_credenciales(numEmpleado, password, vendedor):
         for u in vendedor:
             if u["numEmpleado"] == numEmpleado and u["password"] == password :
-                return True
+                print(f'Inicio de sesión exitoso para {u["nombre"]}')
+                return True 
         return False   
 
     def login(self): 
@@ -31,8 +32,7 @@ class Login():
         ##Hacer que imprima el nombre del vendedor que esta ingresado
 
         if Login.verificar_credenciales(numEmpleado, password, vendedor):
-            print(f"Inicio de sesión exitoso para!")
-            return True
+            Vendedor.menu(self)
         else:
             print("Credenciales incorrectas. Inténtelo de nuevo.")
             return False
@@ -61,7 +61,7 @@ class Vendedor(Personal):
         else:
             match option:
                 case 1:
-                    pass
+                    self.realizar_venta()  # Puedes llamar a otros métodos de la instancia si es necesario
                 case 2:
                     pass
                 case 3:
