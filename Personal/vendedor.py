@@ -61,7 +61,7 @@ class Vendedor(Personal):
         else:
             match option:
                 case 1:
-                    self.realizar_venta()  # Puedes llamar a otros métodos de la instancia si es necesario
+                    pass
                 case 2:
                     pass
                 case 3:
