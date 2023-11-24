@@ -5,7 +5,7 @@ import getpass
 ## Proporciona una interfaz para interactuar con el OS en el que se está ejecutando el script.
 import os
 
-from Personal.personal import Personal
+from .personal import Personal
 
 class Comprador(Personal):
     def __init__(self, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo):

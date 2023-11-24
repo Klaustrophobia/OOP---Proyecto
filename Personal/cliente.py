@@ -1,7 +1,7 @@
 ## Proporciona una interfaz para interactuar con el OS en el que se está ejecutando el script.
 import os
 
-from Personal.persona import Persona
+from .persona import Persona
 
 class Cliente(Persona):
     def __init__(self, nombre, apellido, identidad, telefono, correo):
