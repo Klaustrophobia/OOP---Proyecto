@@ -29,10 +29,9 @@ class Login():
         vendedor = Login.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
         numEmpleado = input("Numero de Empleado: ")
         password = getpass.getpass("Contrasena: ")
-        ##Hacer que imprima el nombre del vendedor que esta ingresado
 
         if Login.verificar_credenciales(numEmpleado, password, vendedor):
-            Vendedor.menu(self)
+            Menu.menu(self)
         else:
             print("Credenciales incorrectas. Inténtelo de nuevo.")
             return False
@@ -45,7 +44,25 @@ class Vendedor(Personal):
         self.ventas_netas = ventas_netas
 
     def realizar_venta(self):
+        print("Seleccione la factura a cobrar: ")
+
+        ##Hacer que imprima el JSON con las facturas dentro
+
         pass
+
+    def metas_ventas(self):
+
+        ##Hacer que imprima el atributo de las metas del vendedor mensuales\
+
+        pass
+
+    def ventas_netas(self):
+
+        #Hacer que imprima las ventas realizadas 
+        
+        pass
+
+class Menu(): 
 
     def menu(self):
         print("Menú de Vendedor")
@@ -61,8 +78,8 @@ class Vendedor(Personal):
         else:
             match option:
                 case 1:
-                    self.realizar_venta()  # Puedes llamar a otros métodos de la instancia si es necesario
-                case 2:
+                    pass
+                case 2:                
                     pass
                 case 3:
                     pass
