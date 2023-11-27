@@ -1,11 +1,13 @@
-from  Personal.vendedor import Login
+from  Personal.administrador import Login_Admin 
+from  Personal.vendedor import Login_Vendedor
 from  Personal.consultor import Menu_Consultor
 from  Personal.cliente import Menu_Cliente
 
 def main():
-    login_vendedor = Login()
+    login_vendedor = Login_Vendedor()
     menu_consultor = Menu_Consultor()
     menu_cliente = Menu_Cliente()
+    login_admin = Login_Admin()
 
     while True: 
         try:
@@ -24,7 +26,7 @@ def main():
 
                 match option: 
                     case 1:
-                        pass
+                        login_admin.login()
                     case 2:
                         login_vendedor.login()
                     case 3: 

@@ -7,7 +7,7 @@ import os
 
 from Personal.personal import Personal
 
-class Login():
+class Login_Vendedor():
     @staticmethod
     def cargar_credenciales():
         script_dir = os.path.dirname(__file__)
@@ -26,11 +26,11 @@ class Login():
         return False   
 
     def login(self): 
-        vendedor = Login.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
+        vendedor = Login_Vendedor.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
         numEmpleado = input("Numero de Empleado: ")
         password = getpass.getpass("Contrasena: ")
 
-        if Login.verificar_credenciales(numEmpleado, password, vendedor):
+        if Login_Vendedor.verificar_credenciales(numEmpleado, password, vendedor):
             Menu.menu(self)
         else:
             print("Credenciales incorrectas. Inténtelo de nuevo.")
