@@ -35,12 +35,12 @@ class Consultor(Persona):
             volver = input("Desea volver al menú principal? (Si/No): ").lower()
             if volver == "si":
                 print()
-                Menu.menu(self)  # Llama al método menu dentro de la clase Menu
+                Menu_Consultor.menu(self)  # Llama al método menu dentro de la clase Menu
             elif volver != "no":
                 print("Opción no válida. Volviendo al menú principal.")
-                Menu.menu(self)
+                Menu_Consultor.menu(self)
 
-class Menu():
+class Menu_Consultor():
 
     def menu(self):
             print("Consulta de productos")

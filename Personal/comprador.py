@@ -40,24 +40,6 @@ class Login():
         else:
             print("Credenciales incorrectas. Inténtelo de nuevo.")
 
-class Menu():
-    while True:
-            print("Menú de Comprador")
-            print("1. Rebastecer productos")
-            print("2. Volver al menú principal")
 
-            try:
-                option = int(input("Ingrese la opción: "))
-            except ValueError:
-                print("Opción no válida, vuelva a intentar.")
-                continue
-            else:  
-                match option:
-                    case 1:
-                        pass
-                    case 2:
-                        pass
-                    case 3:
-                        pass
-    pass 
-        
+class Menu():
+    pass

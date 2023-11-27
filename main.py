@@ -1,9 +1,12 @@
 from  Personal.vendedor import Login
-from  Personal.consultor import Menu
+from  Personal.consultor import Menu_Consultor
+from  Personal.cliente import Menu_Cliente
 
 def main():
     login_vendedor = Login()
-    menu_consultor = Menu()
+    menu_consultor = Menu_Consultor()
+    menu_cliente = Menu_Cliente()
+
     while True: 
         try:
             print("Bienvenido")
@@ -29,7 +32,7 @@ def main():
                     case 4:
                         menu_consultor.menu()
                     case 5:
-                        pass
+                        menu_cliente.menu()
                     case 6:
                         break
                     case default:

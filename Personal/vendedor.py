@@ -84,6 +84,6 @@ class Menu():
                 case 3:
                     pass
                 case 4:
-                    pass
+                    return True
                 case default:
                     print("Opción no válida.")
