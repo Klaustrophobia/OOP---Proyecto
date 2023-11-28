@@ -78,9 +78,9 @@ class Cliente(Persona):
     def carrito_compras(self):
         print("Productos en el carrito:")
         for producto in self.carrito:
-            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["cantidad"]}')
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
 
-        total = sum(producto["costo"] * producto["cantidad"] for producto in self.carrito)
+        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
 class Menu_Cliente():

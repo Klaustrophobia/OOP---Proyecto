@@ -35,22 +35,35 @@ class Login_Admin():
             print("Credenciales incorrectas. Inténtelo de nuevo.")
             return False
 
-
-class Admnistrador (Comprador, Vendedor):
-    def __init__(self):
-        pass
+class Administrador(Vendedor, Comprador):
+    def __init__(self, metas_ventas, ventas_netas, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo):
+        Vendedor.__init__(self, metas_ventas, ventas_netas, num_empleado, salario, nombre, apellido, identidad, telefono, correo)
+        Comprador.__init__(self, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo)
     
     def add_empleado(self):
-        pass
+        print("A continuacion llenar los siguientes espacios de manera cautelosa: ")
+        nombre = input("Ingrese el nombre de la persona: ")
+        apellido = input("Ingrese el apellido de la persona: ")
+        identidad = int(input("Ingrese la identidad de la persona: "))
+        telefono = int(input("Telefono: "))
+        correo = input("Correo: ")
+        numEmpleado = int(input("Numero de Empleado: "))
+        password = input("Password para ingreso al sistema: ")
+        salario = int(input("Salario: "))
+        rol = input("Ingrese el rol del personal: ")
+
+        if rol == "vendedor":
+            metas_ventas = input("Metas de venta que debe tener mensual el vendedor: ")
+            
 
     def delete_empleado(self):
-        pass
+        print("Seleccione las seccion de empleados que desea eliminar: ")
     
     def add_producto(self):
-        pass
+        print("Ingrese de manera cautelosa los siguientes espacios: ")
 
     def delete_producto(self):
-        pass
+        print("Seleccione la categoria que desea revisar: ")
 
 class Menu():
 
@@ -73,6 +86,8 @@ class Menu():
                 case 2:                
                     pass
                 case 3:
+                    pass
+                case 4:
                     pass
                 case 5:
                     return True
