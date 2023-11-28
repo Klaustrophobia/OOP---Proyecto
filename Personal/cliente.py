@@ -47,23 +47,28 @@ class Cliente(Persona):
                 try:
                     for j, producto in enumerate(productos_categoria, 1):
                         print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
-
+                    
                     seleccion = int(input("Seleccione el número de la prenda a comprar: "))
-                    cantidad_comprar = int(input("Ingrese la cantidad a comprar: "))
+                    cantidad_comprar = int(input("Ingrese la cantidad a comprar:"))
 
                     if 1 <= seleccion <= len(productos_categoria) and cantidad_comprar > 0:
                         producto_seleccionado = productos_categoria[seleccion - 1]
 
                         if cantidad_comprar <= producto_seleccionado["existencia"]:
-                            producto_seleccionado["existencia"] -= cantidad_comprar
-
-                            #con esta linea se actualizan los json productos sin necesidad de hacerlos manualmente 
-                            lista_productos[categoria_seleccionada][seleccion-1]['existencia']=producto_seleccionado["existencia"]
-                            with open(file_path,'w') as file:
-                                json.dump(lista_productos,file,indent=4)
-
+                            # Añadir la cantidad a comprar al carrito
+                            producto_seleccionado["existencia_carrito"] = cantidad_comprar
                             self.carrito.append(producto_seleccionado)
                             print(f"Producto añadido al carrito: {producto_seleccionado['marca']}")
+
+                            # Actualizar existencias en el catálogo original
+                            producto_original = self.lista_productos_original.get(categoria_seleccionada, {}).get(seleccion - 1)
+                            if producto_original is not None:
+                                producto_original['existencia'] -= cantidad_comprar
+
+                            # Actualizar existencias en el catálogo actual
+                            lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
+                            with open(file_path,'w') as file:
+                                json.dump(lista_productos,file,indent=4)
                         else:
                             print("No hay suficiente stock para la cantidad seleccionada.")
                     else:
@@ -83,19 +88,18 @@ class Cliente(Persona):
             print("Error al recorrer el archivo JSON de productos.")
 
     def carrito_compras(self):
-        print("Productos en el carrito:")
-        for producto in self.carrito:
-            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
-
-        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
-        print(f'Total de la compra: ${total}')
-
-        select = input("Desea regresar al menu principal (si/no): ").lower()
-
-        if select == 'si':
-            return True
-        else: 
-            pass
+       print("Productos en el carrito:")
+       for producto in self.carrito:
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
+        
+            total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
+            print(f'Total de la compra en el carrito: ${total}')
+        
+            select = input("Desea regresar al menú principal (si/no): ").lower()
+            if select == 'si':
+                Menu_Cliente.menu(self)
+            else:
+                self.enviar_carrito()  # Llamada a la función de enviar_carrito
 
     def enviar_carrito(self):
 
@@ -141,6 +145,8 @@ class Menu_Cliente():
         self.cliente = Cliente("Nombre", "Apellido", "ID", "Teléfono", "Correo")
         self.carrito = []
         self.cliente = []
+        self.lista_productos_original = {}  # Inicializa el catálogo original
+
 
      def menu(self):
 
@@ -161,7 +167,7 @@ class Menu_Cliente():
                     case 2:
                         Cliente.carrito_compras(self)
                     case 3:
-                        pass
+                        Cliente.enviar_carrito(self)
                     case 4:
                         return True         
                     case default:

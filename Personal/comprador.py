@@ -5,8 +5,7 @@ import getpass
 ## Proporciona una interfaz para interactuar con el OS en el que se está ejecutando el script.
 import os
 
-
-from .personal import Personal
+from Personal.personal import Personal
 from  Producto.producto_generico import Producto_Generico
 
 class Comprador(Personal):
@@ -14,36 +13,6 @@ class Comprador(Personal):
         super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
         self.proveedor = proveedor
 
-<<<<<<< HEAD
-class Login_Comprador():
-    @staticmethod
-    def cargar_credenciales():
-        script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, "../Credenciales/comprador.json")
-        
-        with open(file_path, "r") as archivo:
-            data = json.load(archivo)
-            return data["users"]
-
-    @staticmethod
-    def verificar_credenciales(numEmpleado, password,comprador):
-        for u in comprador:
-            if u["numEmpleado"] == numEmpleado and u["password"] == password :
-                print(f'Inicio de sesión exitoso para {u["nombre"]}')
-                return True 
-        return False 
-
-    def login(self): 
-        comprador = Login_Comprador.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
-        numEmpleado = input("Numero de Empleado: ")
-        password = getpass.getpass("Contrasena: ")
-
-        if Login_Comprador.verificar_credenciales(numEmpleado, password, comprador):
-            Menu.menu(self)
-        else:
-            print("Credenciales incorrectas. Inténtelo de nuevo.")
-            return False
-        
     def mostrar_productos(añadir):
         try:
             script_dir = os.path.dirname(__file__)
@@ -76,12 +45,16 @@ class Login_Comprador():
                 if añadir==True:
                     seleccion = int(input("Seleccione Prenda para abastecer: "))
                     producto_seleccionado=productos_categoria[seleccion-1]
+                    
+                    print(producto_seleccionado['existencia'])
 
                     compra=input("Ingrese la cantiadad a comprar: ") 
                     producto_seleccionado["existencia"]+=compra
+                    
+                    print(producto_seleccionado['existencia'])
+
                     #aqui deberia de aumentar el inventario. 
                     lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
-                    
                     with open(file_path,'w') as file:
                         json.dump(lista_productos, file ,indent=4)               
             
@@ -90,6 +63,7 @@ class Login_Comprador():
                 return
         except:
             print("Opcion invalida:")
+
     #crea un producto nuevo
     def producto_nuevo():
         script_dir = os.path.dirname(__file__)
@@ -106,13 +80,39 @@ class Login_Comprador():
         lista_productos["otrosProductos"].append(producto_generico)
         with open(file_path, 'w') as file:
             json.dump(lista_productos,file,indent=4)
-        pass
+        
 
 
-         
-      
-=======
->>>>>>> 4b26be50eb3115d6b34b7b07a649069f19d61b97
+class Login_Comprador():
+    @staticmethod
+    def cargar_credenciales():
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(script_dir, "../Credenciales/comprador.json")
+        
+        with open(file_path, "r") as archivo:
+            data = json.load(archivo)
+            return data["users"]
+
+    @staticmethod
+    def verificar_credenciales(numEmpleado, password,comprador):
+        for u in comprador:
+            if u["numEmpleado"] == numEmpleado and u["password"] == password :
+                print(f'Inicio de sesión exitoso para {u["nombre"]}')
+                return True 
+        return False 
+
+    def login(self): 
+        comprador = Login_Comprador.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
+        numEmpleado = input("Numero de Empleado: ")
+        password = getpass.getpass("Contrasena: ")
+
+        if Login_Comprador.verificar_credenciales(numEmpleado, password, comprador):
+            Menu.menu(self)
+        else:
+            print("Credenciales incorrectas. Inténtelo de nuevo.")
+            return False
+        
+
 class Menu():
     def menu(self):
         while True:
@@ -129,11 +129,11 @@ class Menu():
             else:
                 match option:
                     case 1:
-                       Login_Comprador.mostrar_productos(True) 
+                       Comprador.mostrar_productos(True) 
                     case 2:                
-                        Login_Comprador.producto_nuevo()
+                        Comprador.producto_nuevo()
                     case 3:
-                        Login_Comprador.mostrar_productos(False)
+                        Comprador.mostrar_productos(False)
                     case 4:
                         break
                     case default:

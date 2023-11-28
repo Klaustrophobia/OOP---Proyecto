@@ -1,49 +1,51 @@
 {
     "camisa": [
-
         {
             "codigo": "C001",
             "marca": "MarcaA",
-            "material": "Algodón",
+            "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 50,
+            "existencia": 20,
             "tamano": "M",
             "color": "Azul",
-            "temporada": "Verano"
+            "temporada": "Verano",
+            "existencia_carrito": 10
         },
         {
             "codigo": "C002",
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 30,
+            "existencia": 5,
             "tamano": "L",
             "color": "Rojo",
-            "temporada": "Invierno"
+            "temporada": "Invierno",
+            "existencia_carrito": 5
         },
         {
             "codigo": "C003",
             "marca": "MarcaC",
-            "material": "Poliéster",
+            "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 40,
+            "existencia": 30,
             "tamano": "S",
             "color": "Verde",
-            "temporada": "Primavera"
+            "temporada": "Primavera",
+            "existencia_carrito": 10
         }
     ],
-
-    "sueter" : [
+    "sueter": [
         {
             "codigo": "S001",
             "marca": "MarcaX",
             "material": "Lana",
             "costo": 39.99,
-            "existencia": 20,
+            "existencia": 15,
             "tamano": "L",
             "estilo": "Cuello Alto",
             "espesor": "Mediano",
-            "cierre": "No"
+            "cierre": "No",
+            "existencia_carrito": 5
         },
         {
             "codigo": "S002",
@@ -61,15 +63,15 @@
             "marca": "MarcaZ",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 30,
+            "existencia": 20,
             "tamano": "XL",
             "estilo": "Cuello Redondo",
             "espesor": "Grueso",
-            "cierre": "No"
+            "cierre": "No",
+            "existencia_carrito": 10
         }
     ],
-    
-    "otrosProductos" : [
+    "otrosProductos": [
         {
             "codigo": "G001",
             "marca": "MarcaG1",
@@ -77,7 +79,6 @@
             "costo": 39.99,
             "existencia": 20,
             "tamano": "L"
-            
         },
         {
             "codigo": "G002",
@@ -86,7 +87,6 @@
             "costo": 89.99,
             "existencia": 15,
             "tamano": "S"
-            
         },
         {
             "codigo": "G003",
@@ -95,8 +95,14 @@
             "costo": 55.99,
             "existencia": 30,
             "tamano": "XL"
-            
+        },
+        {
+            "codigo": "001",
+            "marca": "Puma",
+            "material": "Jean",
+            "costo": "100",
+            "existencia": "100",
+            "tamano": "M"
         }
     ]
-
 }
