@@ -83,11 +83,57 @@ class Cliente(Persona):
         total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
+        select = input("Desea regresar al menu principal (si/no): ").lower()
+
+        if select == 'si':
+            return True
+        else: 
+            pass
+
+    def enviar_carrito(self):
+
+        if not self.carrito:
+            print("El carrito está vacío. Agregue productos antes de enviar a facturar.")
+            return
+
+        print("Detalles de su carrito de compras: ")
+        for producto in self.carrito:
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
+
+        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
+        print(f'Total de la compra: ${total}')
+
+        # Solicitar datos del cliente
+        nombre = input("Ingrese su nombre: ")
+        apellido = input("Ingrese su apellido: ")
+        identidad = input("Ingrese su ID: ")
+        telefono = input("Ingrese su número de teléfono: ")
+        correo = input("Ingrese su correo electrónico: ")
+        new_client = Cliente(nombre, apellido, identidad, telefono, correo)
+
+        # Solicitar información de envío
+        envio_opcion = input("¿Desea envío a domicilio? (si/no): ").lower()
+        if envio_opcion == "si":
+            direccion_envio = input("Ingrese su dirección de envío: ")
+            estado_envio = "Pendiente"  # Puedes establecer un estado inicial, por ejemplo, "Pendiente"
+        else:
+            direccion_envio = "Recoger en tienda"
+            estado_envio = "No aplica"
+
+        # Confirmar y enviar a facturar
+        confirmar_factura = input("¿Desea enviar a facturar? (si/no): ").lower()
+        if confirmar_factura == "si":
+            print("Su compra está siendo procesada. ¡Gracias por su compra!")
+            self.carrito = []  # Limpiar el carrito después de enviar a facturar
+        else:
+            print("Compra no procesada. Puede seguir agregando productos al carrito.")
+
 class Menu_Cliente():
      
      def __init__(self):
         self.cliente = Cliente("Nombre", "Apellido", "ID", "Teléfono", "Correo")
         self.carrito = []
+        self.cliente = []
      
      def menu(self):
             

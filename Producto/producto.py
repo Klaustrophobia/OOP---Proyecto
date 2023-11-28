@@ -9,10 +9,11 @@ class Producto(ABC):
         self.existencia = existencia
         self.tamano = tamano
 
-        @abstractmethod
-        def descuento():
-            pass
+    @abstractmethod
+    def descuento():
+        pass
 
-        @staticmethod 
-        def impuesto():
-            pass
+    @staticmethod 
+    def impuesto(self):
+        return 0.15 * self.costo 
+        
