@@ -7,6 +7,7 @@ from .persona import Persona
 class Cliente(Persona):
     def __init__(self, nombre, apellido, identidad, telefono, correo):
         super().__init__(nombre, apellido, identidad, telefono, correo)
+        self.lista_productos_original = {}  # Inicializa el catálogo original
 
     def realizar_compra(self):
 
@@ -88,18 +89,23 @@ class Cliente(Persona):
             print("Error al recorrer el archivo JSON de productos.")
 
     def carrito_compras(self):
-       print("Productos en el carrito:")
-       for producto in self.carrito:
+
+        if not self.carrito:
+            print("El carrito está vacío. Agregue productos antes de enviar a facturar.")
+            return
+
+        print("Detalles de su carrito de compras: ")
+        for producto in self.carrito:
             print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
-        
-            total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
-            print(f'Total de la compra en el carrito: ${total}')
-        
-            select = input("Desea regresar al menú principal (si/no): ").lower()
-            if select == 'si':
-                Menu_Cliente.menu(self)
-            else:
-                self.enviar_carrito()  # Llamada a la función de enviar_carrito
+
+        total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
+        print(f'Total de la compra: ${total}')
+
+        select = input("Desea regresar al menú principal (si/no): ").lower()
+        if select == 'si':
+            Menu_Cliente.menu(self)
+        else:
+            self.enviar_carrito()  # Llamada a la función de enviar_carrito
 
     def enviar_carrito(self):
 
@@ -109,9 +115,9 @@ class Cliente(Persona):
 
         print("Detalles de su carrito de compras: ")
         for producto in self.carrito:
-            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
 
-        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
+        total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
         # Solicitar datos del cliente
@@ -142,9 +148,7 @@ class Cliente(Persona):
 class Menu_Cliente():
 
      def __init__(self):
-        self.cliente = Cliente("Nombre", "Apellido", "ID", "Teléfono", "Correo")
         self.carrito = []
-        self.cliente = []
         self.lista_productos_original = {}  # Inicializa el catálogo original
 
 

@@ -5,18 +5,18 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 20,
+            "existencia": 40,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
-            "existencia_carrito": 10
+            "existencia_carrito": 5
         },
         {
             "codigo": "C002",
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 5,
+            "existencia": 50,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
@@ -27,11 +27,11 @@
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 30,
+            "existencia": 25,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
-            "existencia_carrito": 10
+            "existencia_carrito": 5
         }
     ],
     "sueter": [
@@ -40,19 +40,18 @@
             "marca": "MarcaX",
             "material": "Lana",
             "costo": 39.99,
-            "existencia": 15,
+            "existencia": 13,
             "tamano": "L",
             "estilo": "Cuello Alto",
             "espesor": "Mediano",
-            "cierre": "No",
-            "existencia_carrito": 5
+            "cierre": "No"
         },
         {
             "codigo": "S002",
             "marca": "MarcaY",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 15,
+            "existencia": 13,
             "tamano": "S",
             "estilo": "Cuello en V",
             "espesor": "Ligero",
@@ -63,12 +62,11 @@
             "marca": "MarcaZ",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 20,
+            "existencia": 15,
             "tamano": "XL",
             "estilo": "Cuello Redondo",
             "espesor": "Grueso",
-            "cierre": "No",
-            "existencia_carrito": 10
+            "cierre": "No"
         }
     ],
     "otrosProductos": [
