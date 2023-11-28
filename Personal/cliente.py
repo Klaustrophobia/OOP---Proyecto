@@ -9,6 +9,7 @@ class Cliente(Persona):
         super().__init__(nombre, apellido, identidad, telefono, correo)
 
     def realizar_compra(self):
+        
         try:
             script_dir = os.path.dirname(__file__)
             file_path = os.path.join(script_dir, "../Credenciales/productos.json")
@@ -55,6 +56,12 @@ class Cliente(Persona):
                         
                         if cantidad_comprar <= producto_seleccionado["existencia"]:
                             producto_seleccionado["existencia"] -= cantidad_comprar
+                            
+                            #con esta linea se actualizan los json productos sin necesidad de hacerlos manualmente 
+                            lista_productos[categoria_seleccionada][seleccion-1]['existencia']=producto_seleccionado["existencia"]
+                            with open(file_path,'w') as file:
+                                json.dump(lista_productos,file,indent=4)
+                                
                             self.carrito.append(producto_seleccionado)
                             print(f"Producto añadido al carrito: {producto_seleccionado['marca']}")
                         else:
@@ -150,7 +157,7 @@ class Menu_Cliente():
             else:
                 match option:
                     case 1:
-                       Cliente.realizar_compra(self)
+                        Cliente.realizar_compra(self)
                     case 2:
                         Cliente.carrito_compras(self)
                     case 3:
