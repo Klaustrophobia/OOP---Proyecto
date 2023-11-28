@@ -3,6 +3,7 @@ import os
 import json
 
 from .persona import Persona
+from Compra.OrdenCompra import OrdenCompra
 
 class Cliente(Persona):
     def __init__(self, nombre, apellido, identidad, telefono, correo):
@@ -55,7 +56,7 @@ class Cliente(Persona):
                     if 1 <= seleccion <= len(productos_categoria) and cantidad_comprar > 0:
                         producto_seleccionado = productos_categoria[seleccion - 1]
 
-                        if cantidad_comprar <= producto_seleccionado["existencia"]:
+                        if cantidad_comprar <= int(producto_seleccionado["existencia"]):
                             # Añadir la cantidad a comprar al carrito
                             producto_seleccionado["existencia_carrito"] = cantidad_comprar
                             self.carrito.append(producto_seleccionado)
@@ -126,7 +127,7 @@ class Cliente(Persona):
         identidad = input("Ingrese su ID: ")
         telefono = input("Ingrese su número de teléfono: ")
         correo = input("Ingrese su correo electrónico: ")
-        new_client = Cliente(nombre, apellido, identidad, telefono, correo)
+        cliente = Cliente(nombre, apellido, identidad, telefono, correo)
 
         # Solicitar información de envío
         envio_opcion = input("¿Desea envío a domicilio? (si/no): ").lower()
@@ -140,8 +141,10 @@ class Cliente(Persona):
         # Confirmar y enviar a facturar
         confirmar_factura = input("¿Desea enviar a facturar? (si/no): ").lower()
         if confirmar_factura == "si":
-            print("Su compra está siendo procesada. ¡Gracias por su compra!")
+            orden_compra = OrdenCompra(cliente, self.carrito, envio_opcion, direccion_envio, estado_envio)
+            OrdenCompra.agregar_orden(orden_compra)  # Agregar la orden a la lista de órdenes en la clase OrdenCompra
             self.carrito = []  # Limpiar el carrito después de enviar a facturar
+            print("Su orden esta siendo procesada. Gracias por su compra!")
         else:
             print("Compra no procesada. Puede seguir agregando productos al carrito.")
 

@@ -74,8 +74,8 @@ class Comprador(Personal):
         producto_generico['codigo']=input("Ingrese un Codigo: ")
         producto_generico['marca']=input("Ingrese la Marca: ")
         producto_generico['material']=input("Ingrese el material: ")
-        producto_generico['costo']=input("Ingrese el costo: ")
-        producto_generico['existencia']=input("Ingrese la existencia: ")
+        producto_generico['costo']=int(input("Ingrese el costo: "))
+        producto_generico['existencia']=int(input("Ingrese la existencia: "))
         producto_generico['tamano']=input("Ingrese el tamano: ")
         lista_productos["otrosProductos"].append(producto_generico)
         with open(file_path, 'w') as file:

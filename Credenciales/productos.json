@@ -5,33 +5,33 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 40,
+            "existencia": 8,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
-            "existencia_carrito": 5
+            "existencia_carrito": 2
         },
         {
             "codigo": "C002",
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 50,
+            "existencia": 8,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
-            "existencia_carrito": 5
+            "existencia_carrito": 2
         },
         {
             "codigo": "C003",
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 25,
+            "existencia": 10,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
-            "existencia_carrito": 5
+            "existencia_carrito": 10
         }
     ],
     "sueter": [
@@ -40,33 +40,36 @@
             "marca": "MarcaX",
             "material": "Lana",
             "costo": 39.99,
-            "existencia": 13,
+            "existencia": 5,
             "tamano": "L",
             "estilo": "Cuello Alto",
             "espesor": "Mediano",
-            "cierre": "No"
+            "cierre": "No",
+            "existencia_carrito": 5
         },
         {
             "codigo": "S002",
             "marca": "MarcaY",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 13,
+            "existencia": 10,
             "tamano": "S",
             "estilo": "Cuello en V",
             "espesor": "Ligero",
-            "cierre": "Si"
+            "cierre": "Si",
+            "existencia_carrito": 3
         },
         {
             "codigo": "S003",
             "marca": "MarcaZ",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 15,
+            "existencia": 10,
             "tamano": "XL",
             "estilo": "Cuello Redondo",
             "espesor": "Grueso",
-            "cierre": "No"
+            "cierre": "No",
+            "existencia_carrito": 5
         }
     ],
     "otrosProductos": [
@@ -83,24 +86,27 @@
             "marca": "MarcaG2",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 15,
-            "tamano": "S"
+            "existencia": 10,
+            "tamano": "S",
+            "existencia_carrito": 5
         },
         {
             "codigo": "G003",
             "marca": "MarcaG3",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 30,
-            "tamano": "XL"
+            "existencia": 20,
+            "tamano": "XL",
+            "existencia_carrito": 10
         },
         {
             "codigo": "001",
             "marca": "Puma",
             "material": "Jean",
-            "costo": "100",
-            "existencia": "100",
-            "tamano": "M"
+            "costo": 100,
+            "existencia": 20,
+            "tamano": "M",
+            "existencia_carrito": 10
         }
     ]
 }

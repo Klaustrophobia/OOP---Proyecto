@@ -6,6 +6,7 @@ import getpass
 import os
 
 from Personal.personal import Personal
+from Compra.OrdenCompra import OrdenCompra
 
 class Login_Vendedor():
     @staticmethod
@@ -42,17 +43,39 @@ class Vendedor(Personal):
         super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
         self.metas_ventas = metas_ventas
         self.ventas_netas = ventas_netas
+        
+    def realizar_cobro(self):
+       # Obtener las órdenes pendientes
+        ordenes_pendientes = OrdenCompra.obtener_ordenes_pendientes()
 
-    def realizar_venta(self):
-        print("Seleccione la factura a cobrar: ")
+        if not ordenes_pendientes:
+            print("No hay ordenes pendientes para cobrar.")
+            return
 
-        ##Hacer que imprima el JSON con las facturas dentro
+        print("Ordenes pendientes:")
+        for i, orden in enumerate(ordenes_pendientes, 1):
+            print(f"{i}. Cliente: {orden.cliente.nombre} {orden.cliente.apellido}, Total: ${orden.calcular_total()}")
 
-        pass
+        try:
+            seleccion = int(input("Seleccione el número de la orden a cobrar: "))
+            orden_seleccionada = ordenes_pendientes[seleccion - 1]
+
+            total = orden_seleccionada.calcular_total()
+            print(f"Cobrando ${total} a {orden_seleccionada.cliente.nombre} {orden_seleccionada.cliente.apellido}...")
+            print()
+            print(f"Cobro realizado con exito a {orden_seleccionada.cliente.nombre}")
+
+            # Eliminar el carrito que se pagó
+            orden_seleccionada.cliente.carrito = []
+
+            # Eliminar la orden de la lista de órdenes pendientes
+            OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
+        except (ValueError, IndexError):
+            print("Selección no válida.")
 
     def metas_ventas(self):
 
-        ##Hacer que imprima el atributo de las metas del vendedor mensuales\
+        #Hacer que imprima el atributo de las metas del vendedor mensuales\
 
         pass
 
@@ -78,7 +101,7 @@ class Menu():
         else:
             match option:
                 case 1:
-                    pass
+                    Vendedor.realizar_cobro(self)
                 case 2:                
                     pass
                 case 3:
