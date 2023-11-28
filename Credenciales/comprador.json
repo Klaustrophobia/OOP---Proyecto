@@ -9,7 +9,7 @@
             "correo": "BrittanyMiller@gmail.com",
             "numEmpleado": "Emp4",
             "password": "strongpassword",
-            "salario": "",
+            "salario": 5000,
             "proveedor": ""
         },
 
@@ -21,7 +21,7 @@
             "correo": "EleanorMiller@gmail.com",
             "numEmpleado": "Emp5",
             "password": "newpassword",
-            "salario": "",
+            "salario": 5000,
             "proveedor": ""
         },
 
@@ -33,7 +33,7 @@
             "correo": "DaveSeville@gmail.com",
             "numEmpleado": "Emp7",
             "password": "davespassword",
-            "salario": "",
+            "salario": 5000,
             "proveedor": ""
         }
         

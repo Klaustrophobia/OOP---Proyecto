@@ -6,4 +6,5 @@ class OrdenCompra():
         self.fecha_pedido = fecha_pedido
         self.estado = estado
 
-    
+    def generar_orden(self):
+        pass

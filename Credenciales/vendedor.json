@@ -9,9 +9,9 @@
         "correo": "AlvinSeville@gmail.com",
         "numEmpleado": "Emp1",
         "password" : "password1",
-        "salario": "",
-        "metas_ventas": "",
-        "ventas_netas": ""
+        "salario": 5000,
+        "metas_ventas": 2400,
+        "ventas_netas": 0
     }, 
 
     {
@@ -22,9 +22,9 @@
         "correo": "SimonSeville@gmail.com",
         "numEmpleado": "Emp2",
         "password" : "password2",
-        "salario": "",
-        "metas_ventas": "",
-        "ventas_netas": ""
+        "salario": 5000,
+        "metas_ventas": 5000,
+        "ventas_netas": 0
     },
     
     {
@@ -35,9 +35,9 @@
         "correo": "TeodoroSeville@gmail.com",
         "numEmpleado": "Emp3",
         "password" : "password3",
-        "salario": "",
-        "metas_ventas": "",
-        "ventas_netas": ""
+        "salario": 5000,
+        "metas_ventas": 5000,
+        "ventas_netas": 0
     }
      
     ]

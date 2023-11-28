@@ -6,3 +6,5 @@ class Envio():
         self.fecha_init = fecha_init
         self.fecha_entrega = fecha_entrega
 
+    def generar_envio(self):
+        pass
