@@ -3,10 +3,12 @@ import os
 import json
 
 from .persona import Persona
+from Compra.ordenCompra import OrdenCompra
 
 class Cliente(Persona):
     def __init__(self, nombre, apellido, identidad, telefono, correo):
         super().__init__(nombre, apellido, identidad, telefono, correo)
+        self.carrito = [] # Inicializar el carrito
 
     def realizar_compra(self):
         try:
@@ -132,7 +134,6 @@ class Menu_Cliente():
      
      def __init__(self):
         self.cliente = Cliente("Nombre", "Apellido", "ID", "Teléfono", "Correo")
-        self.carrito = []
         self.cliente = []
      
      def menu(self):
