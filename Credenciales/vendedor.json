@@ -35,18 +35,6 @@
             "salario": 5000,
             "metas_ventas": 5000,
             "ventas_netas": 0
-        },
-        {
-            "nombre": "789",
-            "apellido": "789",
-            "identidad": 789,
-            "telefono": 789,
-            "correo": "789",
-            "numEmpleado": 789,
-            "password": "789",
-            "salario": 789,
-            "metas_ventas": 789,
-            "ventas_netas": 0
         }
     ]
 }

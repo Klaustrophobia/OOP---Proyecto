@@ -8,24 +8,30 @@ from .vendedor import Vendedor
 class Login_Admin():
 
     @staticmethod
-    def cargar_credenciales(personal):
-        credencial = f"../Credenciales/{personal}.json"
+    def cargar_credenciales(credencial):
+        ruta_credencial = f"../Credenciales/{credencial}.json"
         script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, credencial)
+        file_path = os.path.join(script_dir, ruta_credencial)
         
         with open(file_path, "r") as file:
             data = json.load(file)
-            return data["users"]
+            if (credencial != "productos"):
+                return data["users"]
+            else:
+                return data
         
     @staticmethod
-    def actualizar_credenciales(self, personal, lista_personal):
-        credencial = f"../Credenciales/{personal}.json"
+    def actualizar_credenciales(self, credencial, lista):
+        ruta_credencial = f"../Credenciales/{credencial}.json"
         script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, credencial)
+        file_path = os.path.join(script_dir, ruta_credencial)
         
         with open(file_path, "w") as file:
-            dicc = {"users": lista_personal}
-            json.dump(dicc, file, indent=4)
+            if (credencial != "productos"):
+                dicc = {"users": lista}
+                json.dump(dicc, file, indent=4)
+            else:
+                json.dump(lista,file,indent=4)
 
     @staticmethod
     def verificar_credenciales(user, password, admin):
@@ -155,11 +161,121 @@ class Administrador(Vendedor, Comprador):
             else:
                 print("\n--Opción No Válida. Inténtelo de nuevo.--")
 
-    def add_producto(self):
-        print("Ingrese de manera cautelosa los siguientes espacios: ")
+    def add_producto(self, producto):
+        
+        seguir = True
+        while (seguir):
+            print(f"\n**** --Agregar Nuevo Producto [{producto}]-- ****")
+            print("A continuacion llenar los siguientes espacios de manera cautelosa: ")
+            try:
+                codigo = input("Ingrese el código del producto: ")
+                marca = input("Ingrese la  marca del producto: ")
+                material = input("Ingrese el material del producto: ")
+                costo = int(input("Ingrese el costo del producto: "))
+                existencia = int(input("Ingrese la cantidad de existencia del producto: "))
+                tamano = input("Ingrese el tamaño del producto: ")
+                
+            except ValueError:
+                print("\n--Opción No Válida. Inténtelo de nuevo.--")
+            else:
+                
+                lista_productos = Login_Admin.cargar_credenciales("productos")
+                
+                if producto == "Camisa":
+                    color = input("Ingrese el color del producto: ")
+                    temporada = input("Ingrese para que temporada es el producto: ")    
+                    
+                    nuevo_producto = {
+                        "codigo": codigo,
+                        "marca": marca,
+                        "material": material,
+                        "costo": costo,
+                        "existencia": existencia,
+                        "tamano": tamano,
+                        "color": color,
+                        "temporada": temporada
+                    }
+                    
+                    lista_productos["camisa"].append(nuevo_producto)
+                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    
+                    seguir = False
+                
+                elif producto == "Sueter":
+                                        
+                    estilo = input("Ingrese el estilo del producto: ")
+                    espesor = input("Ingrese el espesor del producto: ")
+                    cierre = (input("¿El producto es de cierre? (Si/No): ")).lower()    
+                    
+                    nuevo_producto = {
+                        "codigo": codigo,
+                        "marca": marca,
+                        "material": material,
+                        "costo": costo,
+                        "existencia": existencia,
+                        "tamano": tamano,
+                        "estilo": estilo,
+                        "espesor": espesor,
+                        "cierre": cierre
+                    }
+                    
+                    lista_productos["sueter"].append(nuevo_producto)
+                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    
+                    seguir = False
+                
+                else:
 
-    def delete_producto(self):
-        print("Seleccione la categoria que desea revisar: ")
+                    nuevo_producto = {
+                        "codigo": codigo,
+                        "marca": marca,
+                        "material": material,
+                        "costo": costo,
+                        "existencia": existencia,
+                        "tamano": tamano
+                    }
+                    
+                    lista_productos["otrosProductos"].append(nuevo_producto)
+                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    
+                    seguir = False
+
+    def delete_producto(self, _producto):
+        count = 1
+        print(f"\n**** --Eliminar Producto [{_producto}]-- ****")
+        
+        productos = Login_Admin.cargar_credenciales("productos")
+        
+        if _producto == "Camisa":
+            item = "camisa"            
+            for producto in productos[item]:
+                print(f"Producto ({count}):\n-Código: {producto['codigo']}:\n-Marca: {producto['marca']} \n-Material: {producto['material']}\n-Costo: {producto['costo']}\n-Existencia: {producto['existencia']}\n-Tamaño: {producto['tamano']}\n-Color: {producto['color']}\n-Temporada: {producto['temporada']}\n")
+                count +=1
+
+        elif _producto == "Sueter":
+            item = "sueter"
+            for producto in productos[item]:
+                print(f"Producto ({count}):\n-Código: {producto['codigo']}:\n-Marca: {producto['marca']} \n-Material: {producto['material']}\n-Costo: {producto['costo']}\n-Existencia: {producto['existencia']}\n-Tamaño: {producto['tamano']}\n-Estilo: {producto['estilo']}\n-Espesor: {producto['espesor']}\n-Cierre: {producto['cierre']}\n")
+                count +=1
+        else:
+            item = "otrosProductos"
+            for producto in productos[item]:
+                print(f"Producto ({count}):\n-Código: {producto['codigo']}:\n-Marca: {producto['marca']} \n-Material: {producto['material']}\n-Costo: {producto['costo']}\n-Existencia: {producto['existencia']}\n-Tamaño: {producto['tamano']}\n")
+                count +=1
+
+        try:
+            _option = int(input("Ingrese la opción: "))
+        except ValueError:
+            print("\n--Opción No Válida. Inténtelo de nuevo.--")
+        else:
+            
+            if ((len(productos[item]) > 0) & (_option > 0) & (_option <= (len(productos[item])))):
+                productos[item].pop(_option-1)
+                
+                self.actualizar_credenciales(self, "productos", productos)
+                print("\n--producto Eliminado con Éxito--")
+            else:
+                print("\n--Opción No Válida. Inténtelo de nuevo.--")
 
 class Menu():
 
@@ -244,9 +360,77 @@ class Menu():
                                         print("--Opción No Válida. Inténtelo de nuevo.--")
                     
                     case 3:
-                        pass
+                        _seguir = True
+                        while (_seguir):
+                            print("\n**** --Agregar Producto-- ****")
+                            print("1. Agregar Camisas")
+                            print("2. Agregar Sueteres")
+                            print("3. Agregar Otro Producto")
+                            print("4. Cancelar")
+                            
+                            try:
+                                _option = int(input("Ingrese la opción: "))
+                            except ValueError:
+                                print("--Opción No Válida. Inténtelo de nuevo.--")
+                            else:
+                                
+                                match _option:
+                                    
+                                    case 1:
+                                        Administrador.add_producto(self, "Camisa")
+                                        print("\n--Producto Agregado con Éxito--")
+                                        _seguir = False
+                                    
+                                    case 2:
+                                        Administrador.add_producto(self, "Sueter")
+                                        print("\n--Personal Agregado con Éxito--")
+                                        _seguir = False
+                                    
+                                    case 3:
+                                        Administrador.add_producto(self, "Otro Producto")
+                                        print("\n--Personal Agregado con Éxito--")
+                                        _seguir = False
+                                    
+                                    case 4:
+                                        _seguir = False
+
+                                    case default:
+                                        print("--Opción No Válida. Inténtelo de nuevo.--")
+
                     case 4:
-                        pass
+                        _seguir = True
+                        while (_seguir):
+                            print("\n**** --Eliminar Producto-- ****")
+                            print("1. Eliminar Camisas")
+                            print("2. Eliminar Sueteres")
+                            print("3. Eliminar Otro Producto")
+                            print("4. Cancelar")
+                            
+                            try:
+                                _option = int(input("Ingrese la opción: "))
+                            except ValueError:
+                                print("--Opción No Válida. Inténtelo de nuevo.--")
+                            else:
+                                
+                                match _option:
+                                    
+                                    case 1:
+                                        Administrador.delete_producto(self, "Camisa")
+                                        _seguir = False
+                                    
+                                    case 2:
+                                        Administrador.delete_producto(self, "Sueter")
+                                        _seguir = False
+                                    
+                                    case 3:
+                                        Administrador.delete_producto(self, "Otro Producto")
+                                        _seguir = False
+                                    
+                                    case 4:
+                                        _seguir = False
+
+                                    case default:
+                                        print("--Opción No Válida. Inténtelo de nuevo.--")
 
                     case 5:
                         print("\n--Sesion Cerrada Correctamente. Hasta Pronto.--")
