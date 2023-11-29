@@ -1,8 +1,8 @@
 from .producto import Producto
 class Combo(Producto):
-    def __init__(self, nombre, productos_incluidos, precio_total):
-        self.nombre = nombre 
-        self.productos_incluidos = productos_incluidos
-        self.precio_total = precio_total
+    def __init__(self, codigo, marca, material, costo, existencia, tamano, nombre, productos):
+        super().__init__(codigo, marca, material, costo, existencia, tamano)
+        self.nombre = nombre
+        self.productos = productos
     
     
