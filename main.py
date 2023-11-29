@@ -13,7 +13,7 @@ def main():
 
     while True: 
         try:
-            print("Bienvenido")
+            print("\nBienvenido")
             print("1. Administrador")
             print("2. Vendedor")
             print("3. Comprador")
