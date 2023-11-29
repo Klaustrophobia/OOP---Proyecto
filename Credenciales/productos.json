@@ -5,7 +5,7 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 8,
+            "existencia": 6,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
@@ -110,70 +110,70 @@
         }
     ],
     "combo": [
-      {
-        "nombre": "ComboEspecial",
-        "productos": [
-          {
-            "Nombre": "Camisa",
-            "codigo": "CE001",
-            "marca": "MarcaE1",
-            "material": "Algodón",
-            "costo": 59.99,
-            "existencia": 15,
-            "tamano": "M",
-            "color": "Negro",
-            "temporada": "Otoño",
-            "existencia_carrito": 3
-          },
-          {
-            "Nombre": "Pantalon",
-            "codigo": "CE002",
-            "marca": "MarcaE2",
-            "material": "Seda",
-            "costo": 79.99,
-            "existencia": 10,
-            "tamano": "L",
-            "color": "Blanco",
-            "temporada": "Invierno",
-            "existencia_carrito": 2
-          },
-          {
-            "Nombre": "Sueter",
-            "codigo": "CE003",
-            "marca": "MarcaE3",
-            "material": "Poliéster",
-            "costo": 69.99,
-            "existencia": 12,
-            "tamano": "S",
-            "color": "Gris",
-            "temporada": "Primavera",
-            "existencia_carrito": 4
-          }
-        ]
-      }
-    ], 
+        {
+            "nombre": "ComboEspecial",
+            "productos": [
+                {
+                    "Nombre": "Camisa",
+                    "codigo": "CE001",
+                    "marca": "MarcaE1",
+                    "material": "Algod\u00c3\u00b3n",
+                    "costo": 59.99,
+                    "existencia": 15,
+                    "tamano": "M",
+                    "color": "Negro",
+                    "temporada": "Oto\u00c3\u00b1o",
+                    "existencia_carrito": 3
+                },
+                {
+                    "Nombre": "Pantalon",
+                    "codigo": "CE002",
+                    "marca": "MarcaE2",
+                    "material": "Seda",
+                    "costo": 79.99,
+                    "existencia": 10,
+                    "tamano": "L",
+                    "color": "Blanco",
+                    "temporada": "Invierno",
+                    "existencia_carrito": 2
+                },
+                {
+                    "Nombre": "Sueter",
+                    "codigo": "CE003",
+                    "marca": "MarcaE3",
+                    "material": "Poli\u00c3\u00a9ster",
+                    "costo": 69.99,
+                    "existencia": 12,
+                    "tamano": "S",
+                    "color": "Gris",
+                    "temporada": "Primavera",
+                    "existencia_carrito": 4
+                }
+            ]
+        }
+    ],
     "zapatos": [
         {
             "codigo": "Z001",
             "marca": "Nike",
             "material": "Cuero",
             "costo": 89.99,
-            "existencia": 10,
+            "existencia": 5,
             "tamano": "42",
             "estilo": "Deportivo",
             "color": "Negro",
-            "existencia_carrito": 0
+            "existencia_carrito": 5
         },
         {
             "codigo": "Z002",
             "marca": "Adidas",
-            "material": "Sintético",
+            "material": "Sint\u00c3\u00a9tico",
             "costo": 79.99,
-            "existencia": 15,
+            "existencia": 10,
             "tamano": "38",
             "estilo": "Casual",
             "color": "Blanco",
-            "existencia_carrito": 0
+            "existencia_carrito": 5
         },
         {
             "codigo": "Z003",
@@ -191,24 +191,24 @@
         {
             "codigo": "P001",
             "marca": "Levi's",
-            "material": "Algodón",
+            "material": "Algod\u00c3\u00b3n",
             "costo": 49.99,
-            "existencia": 15,
+            "existencia": 10,
             "tamano": "M",
             "estilo": "Casual",
             "color": "Azul",
-            "existencia_carrito": 0
+            "existencia_carrito": 5
         },
         {
             "codigo": "P002",
             "marca": "Dockers",
             "material": "Mezclilla",
             "costo": 59.99,
-            "existencia": 12,
+            "existencia": 10,
             "tamano": "L",
             "estilo": "Formal",
             "color": "Negro",
-            "existencia_carrito": 0
+            "existencia_carrito": 2
         },
         {
             "codigo": "P003",

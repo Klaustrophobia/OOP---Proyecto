@@ -7,6 +7,7 @@ import os
 
 from Personal.personal import Personal
 from Compra.OrdenCompra import OrdenCompra
+from Compra.Factura import Factura
 
 class Login_Vendedor():
     @staticmethod
@@ -67,23 +68,19 @@ class Vendedor(Personal):
 
             # Eliminar el carrito que se pagó
             orden_seleccionada.cliente.carrito = []
+            
+            # Agrega la factura en ordenes de facturas
+            Factura.agregar_factura(orden_seleccionada)
+
+            # Para imprimir las facturas almacenadas
+            for factura in Factura._facturas_cobradas:
+                Factura.imprimir_factura(factura)
 
             # Eliminar la orden de la lista de órdenes pendientes
             OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
         except (ValueError, IndexError):
             print("Selección no válida.")
 
-    def metas_ventas(self):
-
-        #Hacer que imprima el atributo de las metas del vendedor mensuales\
-
-        pass
-
-    def ventas_netas(self):
-
-        #Hacer que imprima las ventas realizadas 
-        
-        pass
 
 class Menu(): 
 
