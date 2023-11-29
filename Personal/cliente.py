@@ -3,12 +3,15 @@ import os
 import json
 
 from .persona import Persona
+from Compra.OrdenCompra import OrdenCompra
 
 class Cliente(Persona):
     def __init__(self, nombre, apellido, identidad, telefono, correo):
         super().__init__(nombre, apellido, identidad, telefono, correo)
+        self.lista_productos_original = {}  # Inicializa el catálogo original
 
     def realizar_compra(self):
+
         try:
             script_dir = os.path.dirname(__file__)
             file_path = os.path.join(script_dir, "../Credenciales/productos.json")
@@ -48,15 +51,26 @@ class Cliente(Persona):
                         print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                     
                     seleccion = int(input("Seleccione el número de la prenda a comprar: "))
-                    cantidad_comprar = int(input("Ingrese la cantidad a comprar: "))
-                    
+                    cantidad_comprar = int(input("Ingrese la cantidad a comprar:"))
+
                     if 1 <= seleccion <= len(productos_categoria) and cantidad_comprar > 0:
                         producto_seleccionado = productos_categoria[seleccion - 1]
-                        
-                        if cantidad_comprar <= producto_seleccionado["existencia"]:
-                            producto_seleccionado["existencia"] -= cantidad_comprar
+
+                        if cantidad_comprar <= int(producto_seleccionado["existencia"]):
+                            # Añadir la cantidad a comprar al carrito
+                            producto_seleccionado["existencia_carrito"] = cantidad_comprar
                             self.carrito.append(producto_seleccionado)
                             print(f"Producto añadido al carrito: {producto_seleccionado['marca']}")
+
+                            # Actualizar existencias en el catálogo original
+                            producto_original = self.lista_productos_original.get(categoria_seleccionada, {}).get(seleccion - 1)
+                            if producto_original is not None:
+                                producto_original['existencia'] -= cantidad_comprar
+
+                            # Actualizar existencias en el catálogo actual
+                            lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
+                            with open(file_path,'w') as file:
+                                json.dump(lista_productos,file,indent=4)
                         else:
                             print("No hay suficiente stock para la cantidad seleccionada.")
                     else:
@@ -64,7 +78,7 @@ class Cliente(Persona):
 
                     # Pregunta si desea seguir comprando
                     select = input("¿Desea seguir comprando? (si/no): ").lower()
-                    
+
                     if select != "si":
                         Menu_Cliente.menu(self)  # Sale del bucle si la respuesta no es "si"
                 except ValueError:
@@ -76,19 +90,23 @@ class Cliente(Persona):
             print("Error al recorrer el archivo JSON de productos.")
 
     def carrito_compras(self):
-        print("Productos en el carrito:")
-        for producto in self.carrito:
-            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
 
-        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
+        if not self.carrito:
+            print("El carrito está vacío. Agregue productos antes de enviar a facturar.")
+            return
+
+        print("Detalles de su carrito de compras: ")
+        for producto in self.carrito:
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
+
+        total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
-        select = input("Desea regresar al menu principal (si/no): ").lower()
-
+        select = input("Desea regresar al menú principal (si/no): ").lower()
         if select == 'si':
-            return True
-        else: 
-            pass
+            Menu_Cliente.menu(self)
+        else:
+            self.enviar_carrito()  # Llamada a la función de enviar_carrito
 
     def enviar_carrito(self):
 
@@ -98,9 +116,9 @@ class Cliente(Persona):
 
         print("Detalles de su carrito de compras: ")
         for producto in self.carrito:
-            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia"]}')
+            print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
 
-        total = sum(producto["costo"] * producto["existencia"] for producto in self.carrito)
+        total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
         # Solicitar datos del cliente
@@ -109,7 +127,7 @@ class Cliente(Persona):
         identidad = input("Ingrese su ID: ")
         telefono = input("Ingrese su número de teléfono: ")
         correo = input("Ingrese su correo electrónico: ")
-        new_client = Cliente(nombre, apellido, identidad, telefono, correo)
+        cliente = Cliente(nombre, apellido, identidad, telefono, correo)
 
         # Solicitar información de envío
         envio_opcion = input("¿Desea envío a domicilio? (si/no): ").lower()
@@ -123,20 +141,22 @@ class Cliente(Persona):
         # Confirmar y enviar a facturar
         confirmar_factura = input("¿Desea enviar a facturar? (si/no): ").lower()
         if confirmar_factura == "si":
-            print("Su compra está siendo procesada. ¡Gracias por su compra!")
+            orden_compra = OrdenCompra(cliente, self.carrito, envio_opcion, direccion_envio, estado_envio)
+            OrdenCompra.agregar_orden(orden_compra)  # Agregar la orden a la lista de órdenes en la clase OrdenCompra
             self.carrito = []  # Limpiar el carrito después de enviar a facturar
+            print("Su orden esta siendo procesada. Gracias por su compra!")
         else:
             print("Compra no procesada. Puede seguir agregando productos al carrito.")
 
 class Menu_Cliente():
-     
+
      def __init__(self):
-        self.cliente = Cliente("Nombre", "Apellido", "ID", "Teléfono", "Correo")
         self.carrito = []
-        self.cliente = []
-     
+        self.lista_productos_original = {}  # Inicializa el catálogo original
+
+
      def menu(self):
-            
+
             print("Menú de Cliente")
             print("1. Realizar Compra")
             print("2. Ver carrito")
@@ -150,16 +170,13 @@ class Menu_Cliente():
             else:
                 match option:
                     case 1:
-                       Cliente.realizar_compra(self)
+                        Cliente.realizar_compra(self)
                     case 2:
                         Cliente.carrito_compras(self)
                     case 3:
-                        pass
+                        Cliente.enviar_carrito(self)
                     case 4:
                         return True         
                     case default:
                         print("Opción no válida.")
 
-
-
-            
