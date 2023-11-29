@@ -77,11 +77,11 @@ class Login_Comprador():
                     producto_seleccionado=productos_categoria[seleccion-1]
 
                     compra=int(input("Ingrese la cantiadad a comprar: ")) 
-                    print(producto_seleccionado["existencia"])
+                    
                     producto_seleccionado["existencia"]+=compra
 
-                    print(producto_seleccionado["existencia"])
-                    #aqui deberia de aumentar el inventario. 
+                    
+                    #inventario del producto aumenta existencia. 
                     lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
                     
                     with open(file_path,'w') as file:
