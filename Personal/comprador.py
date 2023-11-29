@@ -13,6 +13,35 @@ class Comprador(Personal):
         super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
         self.proveedor = proveedor
 
+class Login_Comprador():
+    @staticmethod
+    def cargar_credenciales():
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(script_dir, "../Credenciales/comprador.json")
+        
+        with open(file_path, "r") as archivo:
+            data = json.load(archivo)
+            return data["users"]
+
+    @staticmethod
+    def verificar_credenciales(numEmpleado, password,comprador):
+        for u in comprador:
+            if u["numEmpleado"] == numEmpleado and u["password"] == password :
+                print(f'Inicio de sesión exitoso para {u["nombre"]}')
+                return True 
+        return False 
+
+    def login(self): 
+        comprador = Login_Comprador.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
+        numEmpleado = input("Numero de Empleado: ")
+        password = getpass.getpass("Contrasena: ")
+
+        if Login_Comprador.verificar_credenciales(numEmpleado, password, comprador):
+            Menu.menu(self)
+        else:
+            print("Credenciales incorrectas. Inténtelo de nuevo.")
+            return False
+     
     def mostrar_productos(añadir):
         try:
             script_dir = os.path.dirname(__file__)
@@ -33,7 +62,7 @@ class Comprador(Personal):
                 print("Por favor, ingrese un número válido.")
                 return
                                  
-            if 1 <= opcion_categoria <= len(categorias_disponibles):
+            if (1 <= opcion_categoria & opcion_categoria<= len(categorias_disponibles)):
                 categoria_seleccionada = categorias_disponibles[opcion_categoria - 1]
                 productos_categoria = lista_productos[categoria_seleccionada]
 
@@ -42,18 +71,23 @@ class Comprador(Personal):
                 for j, producto in enumerate(productos_categoria, 1):
                     print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                 
-                if añadir==True:
+                if añadir:
                     seleccion = int(input("Seleccione Prenda para abastecer: "))
                     producto_seleccionado=productos_categoria[seleccion-1]
                     
                     print(producto_seleccionado['existencia'])
 
-                    compra=input("Ingrese la cantiadad a comprar: ") 
+                    compra=int(input("Ingrese la cantiadad a comprar: ")) 
+                    
                     producto_seleccionado["existencia"]+=compra
+
+                    
+                    #inventario del producto aumenta existencia. 
                     
                     print(producto_seleccionado['existencia'])
 
                     #aqui deberia de aumentar el inventario. 
+                    
                     lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
                     with open(file_path,'w') as file:
                         json.dump(lista_productos, file ,indent=4)               
@@ -80,8 +114,9 @@ class Comprador(Personal):
         lista_productos["otrosProductos"].append(producto_generico)
         with open(file_path, 'w') as file:
             json.dump(lista_productos,file,indent=4)
-        
 
+        print("Producto añadido con exito")    
+        pass
 
 class Login_Comprador():
     @staticmethod
@@ -112,7 +147,6 @@ class Login_Comprador():
             print("Credenciales incorrectas. Inténtelo de nuevo.")
             return False
         
-
 class Menu():
     def menu(self):
         while True:
