@@ -14,7 +14,6 @@ class Comprador(Personal):
         super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
         self.proveedor = proveedor
 
-<<<<<<< HEAD
 class Login_Comprador():
     @staticmethod
     def cargar_credenciales():
@@ -64,7 +63,7 @@ class Login_Comprador():
                 print("Por favor, ingrese un número válido.")
                 return
                                  
-            if 1 <= opcion_categoria <= len(categorias_disponibles):
+            if (1 <= opcion_categoria & opcion_categoria<= len(categorias_disponibles)):
                 categoria_seleccionada = categorias_disponibles[opcion_categoria - 1]
                 productos_categoria = lista_productos[categoria_seleccionada]
 
@@ -73,12 +72,15 @@ class Login_Comprador():
                 for j, producto in enumerate(productos_categoria, 1):
                     print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                 
-                if añadir==True:
+                if añadir:
                     seleccion = int(input("Seleccione Prenda para abastecer: "))
                     producto_seleccionado=productos_categoria[seleccion-1]
 
-                    compra=input("Ingrese la cantiadad a comprar: ") 
+                    compra=int(input("Ingrese la cantiadad a comprar: ")) 
+                    print(producto_seleccionado["existencia"])
                     producto_seleccionado["existencia"]+=compra
+
+                    print(producto_seleccionado["existencia"])
                     #aqui deberia de aumentar el inventario. 
                     lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
                     
@@ -106,13 +108,10 @@ class Login_Comprador():
         lista_productos["otrosProductos"].append(producto_generico)
         with open(file_path, 'w') as file:
             json.dump(lista_productos,file,indent=4)
+        print("Producto añadido con exito")    
         pass
-
-
          
       
-=======
->>>>>>> 4b26be50eb3115d6b34b7b07a649069f19d61b97
 class Menu():
     def menu(self):
         while True:
