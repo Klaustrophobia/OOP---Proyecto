@@ -1,44 +1,40 @@
 {
-    "users" : [
-
-    {
-        "nombre" : "Alvin", 
-        "apellido": "Seville",
-        "identidad": "0801",
-        "telefono": "33889900",
-        "correo": "AlvinSeville@gmail.com",
-        "numEmpleado": "Emp1",
-        "password" : "password1",
-        "salario": 5000,
-        "metas_ventas": 2400,
-        "ventas_netas": 0
-    }, 
-
-    {
-        "nombre" : "Simon", 
-        "apellido": "Seville",
-        "identidad": "0701",
-        "telefono": "391281231",
-        "correo": "SimonSeville@gmail.com",
-        "numEmpleado": "Emp2",
-        "password" : "password2",
-        "salario": 5000,
-        "metas_ventas": 5000,
-        "ventas_netas": 0
-    },
-    
-    {
-        "nombre" : "Teodoro", 
-        "apellido": "Seville",
-        "identidad": "0601",
-        "telefono": "93849084",
-        "correo": "TeodoroSeville@gmail.com",
-        "numEmpleado": "Emp3",
-        "password" : "password3",
-        "salario": 5000,
-        "metas_ventas": 5000,
-        "ventas_netas": 0
-    }
-     
+    "users": [
+        {
+            "nombre": "Alvin",
+            "apellido": "Seville",
+            "identidad": "0801",
+            "telefono": "33889900",
+            "correo": "AlvinSeville@gmail.com",
+            "numEmpleado": "Emp1",
+            "password": "password1",
+            "salario": 5000,
+            "metas_ventas": 2400,
+            "ventas_netas": 0
+        },
+        {
+            "nombre": "Simon",
+            "apellido": "Seville",
+            "identidad": "0701",
+            "telefono": "391281231",
+            "correo": "SimonSeville@gmail.com",
+            "numEmpleado": "Emp2",
+            "password": "password2",
+            "salario": 5000,
+            "metas_ventas": 5000,
+            "ventas_netas": 0
+        },
+        {
+            "nombre": "Teodoro",
+            "apellido": "Seville",
+            "identidad": "0601",
+            "telefono": "93849084",
+            "correo": "TeodoroSeville@gmail.com",
+            "numEmpleado": "Emp3",
+            "password": "password3",
+            "salario": 5000,
+            "metas_ventas": 5000,
+            "ventas_netas": 0
+        }
     ]
 }
