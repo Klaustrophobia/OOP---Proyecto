@@ -103,9 +103,9 @@ class Menu():
                 case 1:
                     Vendedor.realizar_cobro(self)
                 case 2:                
-                    pass
+                    Vendedor.metas_netas(self)
                 case 3:
-                    pass
+                    Vendedor.ventas_netas(self)
                 case 4:
                     return True
                 case default:
