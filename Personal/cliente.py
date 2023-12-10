@@ -55,7 +55,7 @@ class Cliente(Persona):
                                 print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                         else:
                             for k, producto in enumerate(productos_categoria, 1):
-                                print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
+                                print(f'{k}. Nombre: {producto["nombre"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
 
                         select = input("Desea seleccionar alguna prenda (si/no): ").lower()
 
@@ -67,7 +67,7 @@ class Cliente(Persona):
                                     print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                             else:
                                 for k, producto in enumerate(productos_categoria, 1):
-                                    print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
+                                    print(f'{k}. Nombre: {producto["nombre"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
 
                             try:
                                 seleccion = int(input("Seleccione el número de la prenda a comprar: "))
@@ -200,7 +200,8 @@ class Menu_Cliente():
                         Cliente.enviar_carrito(self)
                     
                     case 4:
-                        return True         
+                        print("\n--Saliendo... Hasta Pronto.--")
+                        seguir = False        
                     
                     case default:
                         print("\n--Opción No Válida. Inténtelo de nuevo.--")

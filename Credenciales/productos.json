@@ -5,7 +5,7 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
@@ -16,7 +16,7 @@
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
@@ -27,7 +27,7 @@
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
@@ -114,8 +114,9 @@
             "marca": "1",
             "material": "1",
             "costo": 1,
-            "existencia": 2,
-            "tamano": "1"
+            "existencia": 1,
+            "tamano": "1",
+            "existencia_carrito": 1
         },
         {
             "codigo": "2",
@@ -138,6 +139,7 @@
         {
             "nombre": "ComboEspecial",
             "existencia": 1,
+            "costo": 150,
             "productos": [
                 {
                     "Nombre": "Camisa",
@@ -241,11 +243,11 @@
             "marca": "Tommy Hilfiger",
             "material": "Lino",
             "costo": 69.99,
-            "existencia": 10,
+            "existencia": 9,
             "tamano": "XL",
             "estilo": "Verano",
             "color": "Beige",
-            "existencia_carrito": 0
+            "existencia_carrito": 1
         }
     ]
 }
