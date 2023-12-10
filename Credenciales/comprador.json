@@ -21,17 +21,6 @@
             "password": "newpassword",
             "salario": 5000,
             "proveedor": ""
-        },
-        {
-            "nombre": "Dave",
-            "apellido": "Seville",
-            "identidad": "0807",
-            "telefono": "33008800",
-            "correo": "DaveSeville@gmail.com",
-            "numEmpleado": "Emp7",
-            "password": "davespassword",
-            "salario": 5000,
-            "proveedor": ""
         }
     ]
 }
