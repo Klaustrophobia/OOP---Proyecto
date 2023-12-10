@@ -5,33 +5,33 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 6,
+            "existencia": 4,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
-            "existencia_carrito": 2
+            "existencia_carrito": 1
         },
         {
             "codigo": "C002",
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 8,
+            "existencia": 4,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
-            "existencia_carrito": 2
+            "existencia_carrito": 1
         },
         {
             "codigo": "C003",
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 8,
+            "existencia": 4,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
-            "existencia_carrito": 2
+            "existencia_carrito": 1
         }
     ],
     "sueter": [

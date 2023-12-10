@@ -22,7 +22,7 @@ class Factura:
 
     @classmethod
     def imprimir_factura(cls, factura):
-        print("----- Factura -----")
+        print("\n----- Factura -----")
         print(f"ID de Factura: {factura.id_factura}")
         print(f"Fecha de Emisión: {factura.fecha_emision}")
         print(f"Cliente: {factura.cliente.nombre} {factura.cliente.apellido}")
