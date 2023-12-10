@@ -114,7 +114,7 @@
             "marca": "1",
             "material": "1",
             "costo": 1,
-            "existencia": 1,
+            "existencia": 2,
             "tamano": "1"
         },
         {
@@ -124,12 +124,20 @@
             "costo": 2,
             "existencia": 2,
             "tamano": "2"
+        },
+        {
+            "codigo": "1",
+            "marca": "1",
+            "material": "1",
+            "costo": 1,
+            "existencia": 1,
+            "tamano": "1"
         }
     ],
     "combo": [
         {
             "nombre": "ComboEspecial",
-            "existencia": 0,
+            "existencia": 1,
             "productos": [
                 {
                     "Nombre": "Camisa",

@@ -61,20 +61,29 @@ class Comprador(Personal):
                                     print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
 
                         if añadir:
-                            seleccion = int(input("Seleccione Prenda para abastecer: "))
-                            producto_seleccionado=productos_categoria[seleccion-1]
-                            
-                            compra=int(input("Ingrese la cantiadad a comprar: ")) 
-                            
-                            #inventario del producto aumenta existencia. 
-                            producto_seleccionado["existencia"]+=compra
-                            
-                            lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
-                            with open(file_path,'w') as file:
-                                json.dump(lista_productos, file ,indent=4)               
-                            
-                            print("\n--Producto Agregado con Éxito--")
-                            seguir = False
+                            try:
+                                seleccion = int(input("Seleccione Prenda para abastecer: "))
+                                compra=int(input("Ingrese la cantiadad a comprar: ")) 
+                            except ValueError:
+                                print("\n--Opción No Válida. Inténtelo de nuevo.--")
+                            else:
+                                
+                                if 1 <= seleccion <= len(productos_categoria) and compra >= 0:
+                                    producto_seleccionado=productos_categoria[seleccion-1]
+                                
+                                    #inventario del producto aumenta existencia. 
+                                    producto_seleccionado["existencia"]+=compra
+                                    
+                                    lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
+                                    with open(file_path,'w') as file:
+                                        json.dump(lista_productos, file ,indent=4)               
+                                    
+                                    print("\n--Producto Agregado con Éxito--")
+                                    seguir = False
+                                
+                                else:
+                                    print("\n--Opción No Válida. Inténtelo de nuevo.--")
+                                
                     else:
                         print("\n--Opción No Válida. Inténtelo de nuevo.--")
         
@@ -87,19 +96,23 @@ class Comprador(Personal):
             lista_productos = json.load(file)
         
         producto_generico={}
-        print(f"\n**** --Agregar Nuevo Producto-- ****")
-        producto_generico['codigo']=input("Ingrese un Codigo: ")
-        producto_generico['marca']=input("Ingrese la Marca: ")
-        producto_generico['material']=input("Ingrese el material: ")
-        producto_generico['costo']=int(input("Ingrese el costo: "))
-        producto_generico['existencia']=int(input("Ingrese la existencia: "))
-        producto_generico['tamano']=input("Ingrese el tamano: ")
         
-        lista_productos["otrosProductos"].append(producto_generico)
-        with open(file_path, 'w') as file:
-            json.dump(lista_productos,file,indent=4)
+        try:
+            print(f"\n**** --Agregar Nuevo Producto-- ****")
+            producto_generico['codigo']=input("Ingrese un Codigo: ")
+            producto_generico['marca']=input("Ingrese la Marca: ")
+            producto_generico['material']=input("Ingrese el material: ")
+            producto_generico['costo']=int(input("Ingrese el costo: "))
+            producto_generico['existencia']=int(input("Ingrese la existencia: "))
+            producto_generico['tamano']=input("Ingrese el tamano: ")
+        except ValueError:
+            print("\n--Opción No Válida. Inténtelo de nuevo.--")
+        else:
+            lista_productos["otrosProductos"].append(producto_generico)
+            with open(file_path, 'w') as file:
+                json.dump(lista_productos,file,indent=4)
 
-        print("\n--Producto Agregado con Éxito--")
+            print("\n--Producto Agregado con Éxito--")
    
 class Login_Comprador():
     @staticmethod
