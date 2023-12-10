@@ -5,7 +5,7 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 3,
+            "existencia": 4,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
@@ -16,7 +16,7 @@
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 3,
+            "existencia": 4,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
@@ -27,7 +27,7 @@
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 3,
+            "existencia": 4,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
@@ -40,7 +40,7 @@
             "marca": "MarcaX",
             "material": "Lana",
             "costo": 39.99,
-            "existencia": 5,
+            "existencia": 8,
             "tamano": "L",
             "estilo": "Cuello Alto",
             "espesor": "Mediano",
@@ -108,6 +108,22 @@
             "existencia": 20,
             "tamano": "M",
             "existencia_carrito": 10
+        },
+        {
+            "codigo": "1",
+            "marca": "1",
+            "material": "1",
+            "costo": 1,
+            "existencia": 1,
+            "tamano": "1"
+        },
+        {
+            "codigo": "2",
+            "marca": "2",
+            "material": "2",
+            "costo": 2,
+            "existencia": 2,
+            "tamano": "2"
         }
     ],
     "combo": [

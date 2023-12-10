@@ -81,7 +81,6 @@ class Vendedor(Personal):
             # Eliminar la orden de la lista de órdenes pendientes
             OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
 
-
 class Menu(): 
 
     def menu(self):

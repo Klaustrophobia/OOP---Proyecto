@@ -18,7 +18,6 @@ class Cliente(Persona):
 
             with open(file_path, 'r') as file:
                 lista_productos = json.load(file)
-                
             categorias_disponibles = list(lista_productos.keys())
         
         except FileNotFoundError:
@@ -46,7 +45,6 @@ class Cliente(Persona):
                     
                     elif 1 <= opcion_categoria <= len(categorias_disponibles):
                         categoria_seleccionada = categorias_disponibles[opcion_categoria - 1]
-                        print(categoria_seleccionada)
                         productos_categoria = lista_productos[categoria_seleccionada]
 
                         # Imprimir los productos de la categoría seleccionada
@@ -107,7 +105,6 @@ class Cliente(Persona):
 
                     else:
                         print("\n--Opción No Válida. Inténtelo de nuevo.--")
-
 
     def carrito_compras(self):
 
