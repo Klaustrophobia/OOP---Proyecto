@@ -19,6 +19,19 @@ class Cliente(Persona):
             with open(file_path, 'r') as file:
                 lista_productos = json.load(file)
             categorias_disponibles = list(lista_productos.keys())
+            
+            #Productos existentes que conforman el combo
+            cant_max_combos = []
+            cant_max_combos.append(lista_productos["camisa"][0]["existencia"])
+            cant_max_combos.append(lista_productos["sueter"][0]["existencia"])
+            cant_max_combos.append(lista_productos["otrosProductos"][0]["existencia"])
+            cant_max_combos.sort()
+            #Remplaza el valor en existencia del combo con la cantidad del producto con menor exintencia.
+            lista_productos["combo"][0]["existencia"] = cant_max_combos[0]
+            
+            with open(file_path,'w') as file:
+                json.dump(lista_productos, file ,indent=4)               
+            #Existencia de combos actualizada.
         
         except FileNotFoundError:
                 print("\n--No se encontró el archivo JSON de productos.--")
@@ -50,24 +63,17 @@ class Cliente(Persona):
                         # Imprimir los productos de la categoría seleccionada
                         print(f"\n**** --Lista de productos ({categoria_seleccionada})-- ****")
                         
-                        if categoria_seleccionada != "combo":
-                            for j, producto in enumerate(productos_categoria, 1):
+                        for j, producto in enumerate(productos_categoria, 1):
                                 print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
-                        else:
-                            for k, producto in enumerate(productos_categoria, 1):
-                                print(f'{k}. Nombre: {producto["nombre"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
 
                         select = input("Desea seleccionar alguna prenda (si/no): ").lower()
 
                         while select == "si":
                             
                             print("\n**** --Seleccione un producto-- ****")
-                            if categoria_seleccionada != "combo":
-                                for j, producto in enumerate(productos_categoria, 1):
+                            
+                            for j, producto in enumerate(productos_categoria, 1):
                                     print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
-                            else:
-                                for k, producto in enumerate(productos_categoria, 1):
-                                    print(f'{k}. Nombre: {producto["nombre"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
 
                             try:
                                 seleccion = int(input("Seleccione el número de la prenda a comprar: "))
@@ -83,17 +89,29 @@ class Cliente(Persona):
                                         # Añadir la cantidad a comprar al carrito
                                         producto_seleccionado["existencia_carrito"] = cantidad_comprar
                                         self.carrito.append(producto_seleccionado)
+                                        
                                         print(f"\n--Producto añadido al carrito: {producto_seleccionado['marca']}--")
 
                                         # Actualizar existencias en el catálogo original
-                                        producto_original = self.lista_productos_original.get(categoria_seleccionada, {}).get(seleccion - 1)
-                                        if producto_original is not None:
-                                            producto_original['existencia'] -= cantidad_comprar
+                                        #producto_original = self.lista_productos_original.get(categoria_seleccionada, {}).get(seleccion - 1)
+                                        #if producto_original is not None:
+                                            #producto_original['existencia'] -= cantidad_comprar
 
                                         # Actualizar existencias en el catálogo actual
-                                        lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
+                                        if categoria_seleccionada != "combo":
+                                            lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
+                                            
+                                        else:
+                                            #Se cambian tanto los combos como los demas productos.
+                                            lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
+                                            lista_productos["camisa"][0]["existencia"] -= cantidad_comprar
+                                            lista_productos["sueter"][0]["existencia"] -= cantidad_comprar
+                                            lista_productos["otrosProductos"][0]["existencia"] -= cantidad_comprar
+                                        
                                         with open(file_path,'w') as file:
-                                            json.dump(lista_productos,file,indent=4)
+                                                json.dump(lista_productos,file,indent=4)
+                                        #Existencias de productos actualizada.
+
                                     else:
                                         print("\n--No hay suficiente stock para la cantidad seleccionada.--")
                                 
@@ -114,6 +132,7 @@ class Cliente(Persona):
 
         print("\nDetalles de su carrito de compras: ")
         for producto in self.carrito:
+            
             print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
 
         total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)

@@ -33,14 +33,9 @@ class Consultor(Persona):
                     for categoria, productos in lista_productos.items():
                         
                         print(f"\n-Productos ({categoria}):")
-                        if categoria != "combo":
-                            for producto in productos:
-                                print(f'Nombre: {producto["codigo"]}, Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
+                        for producto in productos:
+                                print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
 
-                        else:
-                            for producto in productos:
-                                print(f'Nombre: {producto["nombre"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
-                    
                     seguir = False
                             
 class Menu_Consultor():

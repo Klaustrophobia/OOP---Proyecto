@@ -22,7 +22,20 @@ class Comprador(Personal):
             with open(file_path, 'r') as file:
                 lista_productos = json.load(file)
             categorias_disponibles = list(lista_productos.keys())
-        
+
+            #Productos existentes que conforman el combo
+            cant_max_combos = []
+            cant_max_combos.append(lista_productos["camisa"][0]["existencia"])
+            cant_max_combos.append(lista_productos["sueter"][0]["existencia"])
+            cant_max_combos.append(lista_productos["otrosProductos"][0]["existencia"])
+            cant_max_combos.sort()
+            #Remplaza el valor en existencia del combo con la cantidad del producto con menor exintencia.
+            lista_productos["combo"][0]["existencia"] = cant_max_combos[0]
+            
+            with open(file_path,'w') as file:
+                json.dump(lista_productos, file ,indent=4)               
+            #Existencia de combos actualizada.
+
         except FileNotFoundError:
                 print("\n--No se encontró el archivo JSON de productos.--")
         except json.JSONDecodeError:
@@ -53,12 +66,8 @@ class Comprador(Personal):
                         # Imprimir los productos de la categoría seleccionada
                         print(f"\n**** --Lista de productos ({categoria_seleccionada})-- ****")
                         
-                        if categoria_seleccionada != "combo":
-                            for j, producto in enumerate(productos_categoria, 1):
+                        for j, producto in enumerate(productos_categoria, 1):
                                 print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
-                        else:
-                                for k, producto in enumerate(productos_categoria, 1):
-                                    print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
 
                         if añadir:
                             try:
@@ -69,14 +78,20 @@ class Comprador(Personal):
                             else:
                                 
                                 if 1 <= seleccion <= len(productos_categoria) and compra >= 0:
-                                    producto_seleccionado=productos_categoria[seleccion-1]
-                                
-                                    #inventario del producto aumenta existencia. 
-                                    producto_seleccionado["existencia"]+=compra
                                     
-                                    lista_productos[categoria_seleccionada][seleccion-1]["existencia"]=producto_seleccionado["existencia"]
+                                    if categoria_seleccionada != "combo":
+                                        lista_productos[categoria_seleccionada][seleccion-1]['existencia'] += compra
+                                            
+                                    else:
+                                        #Se cambian tanto los combos como los demas productos.
+                                        lista_productos[categoria_seleccionada][seleccion-1]['existencia'] += compra
+                                        lista_productos["camisa"][0]["existencia"] += compra
+                                        lista_productos["sueter"][0]["existencia"] += compra
+                                        lista_productos["otrosProductos"][0]["existencia"] += compra
+                                    
                                     with open(file_path,'w') as file:
                                         json.dump(lista_productos, file ,indent=4)               
+                                    #Existencias de productos actualizada.
                                     
                                     print("\n--Producto Agregado con Éxito--")
                                     seguir = False
