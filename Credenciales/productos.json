@@ -5,7 +5,7 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
@@ -16,7 +16,7 @@
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
@@ -27,7 +27,7 @@
             "marca": "MarcaC",
             "material": "Poli\u00c3\u00a9ster",
             "costo": 35.99,
-            "existencia": 4,
+            "existencia": 3,
             "tamano": "S",
             "color": "Verde",
             "temporada": "Primavera",
@@ -52,24 +52,24 @@
             "marca": "MarcaY",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 10,
+            "existencia": 8,
             "tamano": "S",
             "estilo": "Cuello en V",
             "espesor": "Ligero",
             "cierre": "Si",
-            "existencia_carrito": 3
+            "existencia_carrito": 1
         },
         {
             "codigo": "S003",
             "marca": "MarcaZ",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 10,
+            "existencia": 8,
             "tamano": "XL",
             "estilo": "Cuello Redondo",
             "espesor": "Grueso",
             "cierre": "No",
-            "existencia_carrito": 5
+            "existencia_carrito": 1
         }
     ],
     "otrosProductos": [
@@ -78,17 +78,18 @@
             "marca": "MarcaG1",
             "material": "Jean",
             "costo": 39.99,
-            "existencia": 20,
-            "tamano": "L"
+            "existencia": 19,
+            "tamano": "L",
+            "existencia_carrito": 1
         },
         {
             "codigo": "G002",
             "marca": "MarcaG2",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 10,
+            "existencia": 9,
             "tamano": "S",
-            "existencia_carrito": 5
+            "existencia_carrito": 1
         },
         {
             "codigo": "G003",
@@ -112,6 +113,7 @@
     "combo": [
         {
             "nombre": "ComboEspecial",
+            "existencia": 0,
             "productos": [
                 {
                     "Nombre": "Camisa",
@@ -169,11 +171,11 @@
             "marca": "Adidas",
             "material": "Sint\u00c3\u00a9tico",
             "costo": 79.99,
-            "existencia": 10,
+            "existencia": 8,
             "tamano": "38",
             "estilo": "Casual",
             "color": "Blanco",
-            "existencia_carrito": 5
+            "existencia_carrito": 1
         },
         {
             "codigo": "Z003",
@@ -193,22 +195,22 @@
             "marca": "Levi's",
             "material": "Algod\u00c3\u00b3n",
             "costo": 49.99,
-            "existencia": 10,
+            "existencia": 9,
             "tamano": "M",
             "estilo": "Casual",
             "color": "Azul",
-            "existencia_carrito": 5
+            "existencia_carrito": 1
         },
         {
             "codigo": "P002",
             "marca": "Dockers",
             "material": "Mezclilla",
             "costo": 59.99,
-            "existencia": 10,
+            "existencia": 9,
             "tamano": "L",
             "estilo": "Formal",
             "color": "Negro",
-            "existencia_carrito": 2
+            "existencia_carrito": 1
         },
         {
             "codigo": "P003",

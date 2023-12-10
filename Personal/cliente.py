@@ -57,7 +57,7 @@ class Cliente(Persona):
                                 print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                         else:
                             for k, producto in enumerate(productos_categoria, 1):
-                                print(f'{k}. Combo: {producto["nombre"]}')
+                                print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
 
                         select = input("Desea seleccionar alguna prenda (si/no): ").lower()
 
@@ -69,7 +69,7 @@ class Cliente(Persona):
                                     print(f'{j}. Marca: {producto["marca"]}, Precio: {producto["costo"]}, Stock: {producto["existencia"]}')
                             else:
                                 for k, producto in enumerate(productos_categoria, 1):
-                                    print(f'{k}. Combo: {producto["nombre"]}')
+                                    print(f'{k}. Combo: {producto["nombre"]}, existencia: {producto["existencia"]}')
 
                             try:
                                 seleccion = int(input("Seleccione el número de la prenda a comprar: "))
@@ -115,14 +115,14 @@ class Cliente(Persona):
             print("\n--El carrito está vacío. Favor agregar productos.--")
             return
 
-        print("Detalles de su carrito de compras: ")
+        print("\nDetalles de su carrito de compras: ")
         for producto in self.carrito:
             print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
 
         total = sum(producto["costo"] * producto["existencia_carrito"] for producto in self.carrito)
         print(f'Total de la compra: ${total}')
 
-        select = input("Desea regresar al menú principal (si/no): ").lower()
+        select = input("\nDesea regresar al menú principal (si/no): ").lower()
         if select == 'si':
             Menu_Cliente.menu(self)
         else:
@@ -134,7 +134,7 @@ class Cliente(Persona):
             print("\n--El carrito está vacío. Agregue productos antes de enviar a facturar.--")
             return
 
-        print("Detalles de su carrito de compras: ")
+        print("\nDetalles de su carrito de compras: ")
         for producto in self.carrito:
             print(f'Marca: {producto["marca"]}, Precio: {producto["costo"]}, Cantidad: {producto["existencia_carrito"]}')
 
@@ -165,9 +165,9 @@ class Cliente(Persona):
             orden_compra = OrdenCompra(cliente, self.carrito, envio_opcion, direccion_envio, estado_envio)
             OrdenCompra.agregar_orden(orden_compra)  # Agregar la orden a la lista de órdenes en la clase OrdenCompra
             self.carrito = []  # Limpiar el carrito después de enviar a facturar
-            print("\nSu orden esta siendo procesada. Gracias por su compra!")
+            print("\n--Su orden esta siendo procesada. Gracias por su compra!--")
         else:
-            print("\nCompra no procesada. Puede seguir agregando productos al carrito.")
+            print("\n--Compra no procesada. Puede seguir agregando productos al carrito.--")
 
 class Menu_Cliente():
 

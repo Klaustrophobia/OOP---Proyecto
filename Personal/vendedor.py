@@ -60,8 +60,11 @@ class Vendedor(Personal):
         try:
             seleccion = int(input("Seleccione el número de la orden a cobrar: "))
             orden_seleccionada = ordenes_pendientes[seleccion - 1]
-
             total = orden_seleccionada.calcular_total()
+        except (ValueError, IndexError):
+            print("\n--Opción No Válida. Inténtelo de nuevo.--")
+        else:
+            
             print(f"\nCobrando ${total} a {orden_seleccionada.cliente.nombre} {orden_seleccionada.cliente.apellido}...")
             print(f"\nCobro realizado con exito a {orden_seleccionada.cliente.nombre}")
 
@@ -77,8 +80,6 @@ class Vendedor(Personal):
 
             # Eliminar la orden de la lista de órdenes pendientes
             OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
-        except (ValueError, IndexError):
-            print("Selección no válida.")
 
 
 class Menu(): 
