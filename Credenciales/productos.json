@@ -78,9 +78,9 @@
             "marca": "MarcaG1",
             "material": "Jean",
             "costo": 39.99,
-            "existencia": 7,
+            "existencia": 6,
             "tamano": "L",
-            "existencia_carrito": 2
+            "existencia_carrito": 1
         },
         {
             "codigo": "G002",
@@ -164,11 +164,11 @@
             "marca": "Adidas",
             "material": "Sint\u00c3\u00a9tico",
             "costo": 79.99,
-            "existencia": 7,
+            "existencia": 5,
             "tamano": "38",
             "estilo": "Casual",
             "color": "Blanco",
-            "existencia_carrito": 1
+            "existencia_carrito": 2
         },
         {
             "codigo": "Z003",
