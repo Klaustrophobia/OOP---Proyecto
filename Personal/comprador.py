@@ -9,8 +9,8 @@ from Personal.personal import Personal
 from  Producto.producto_generico import Producto_Generico
 
 class Comprador(Personal):
-    def __init__(self, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo):
-        super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
+    def __init__(self, proveedor, num_empleado, password, salario, nombre, apellido, identidad, telefono, correo):
+        super().__init__(num_empleado, password, salario, nombre, apellido, identidad, telefono, correo)
         self.proveedor = proveedor
     
     def mostrar_productos(añadir):
@@ -60,7 +60,9 @@ class Comprador(Personal):
                             seguir = False
                         
                     elif (1 <= opcion_categoria & opcion_categoria<= len(categorias_disponibles)):
+                        #palabra
                         categoria_seleccionada = categorias_disponibles[opcion_categoria - 1]
+                        #lista
                         productos_categoria = lista_productos[categoria_seleccionada]
 
                         # Imprimir los productos de la categoría seleccionada
@@ -97,7 +99,7 @@ class Comprador(Personal):
                                     seguir = False
                                 
                                 else:
-                                    print("\n--Opción No Válida. Inténtelo de nuevo.--")
+                                    print("\n--Número De Prenda o cantidad a comprar No válidos. Inténtelo de nuevo.--")
                                 
                     else:
                         print("\n--Opción No Válida. Inténtelo de nuevo.--")
@@ -120,6 +122,7 @@ class Comprador(Personal):
             producto_generico['costo']=int(input("Ingrese el costo: "))
             producto_generico['existencia']=int(input("Ingrese la existencia: "))
             producto_generico['tamano']=input("Ingrese el tamano: ")
+            producto_generico['existencia_carrito'] = 0
         except ValueError:
             print("\n--Opción No Válida. Inténtelo de nuevo.--")
         else:

@@ -6,7 +6,7 @@
             "identidad": "0804",
             "telefono": "33221100",
             "correo": "BrittanyMiller@gmail.com",
-            "numEmpleado": "Emp4",
+            "numEmpleado": "Comp1",
             "password": "newpassword",
             "salario": 5000,
             "proveedor": ""
@@ -17,7 +17,18 @@
             "identidad": "0805",
             "telefono": "33445500",
             "correo": "EleanorMiller@gmail.com",
-            "numEmpleado": "Emp5",
+            "numEmpleado": "Comp2",
+            "password": "strongpassword",
+            "salario": 5000,
+            "proveedor": ""
+        },
+        {
+            "nombre": "Josue",
+            "apellido": "Ramirez",
+            "identidad": "6938",
+            "telefono": "25986159",
+            "correo": "ramirjo@gmail.com",
+            "numEmpleado": "Comp3",
             "password": "strongpassword",
             "salario": 5000,
             "proveedor": ""

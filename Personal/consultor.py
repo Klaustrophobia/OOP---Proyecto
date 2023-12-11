@@ -28,7 +28,20 @@ class Consultor(Persona):
 
                 seguir = True        
                 while (seguir):
-                
+                    
+                    #Productos existentes que conforman el combo
+                    cant_max_combos = []
+                    cant_max_combos.append(lista_productos["camisa"][0]["existencia"])
+                    cant_max_combos.append(lista_productos["sueter"][0]["existencia"])
+                    cant_max_combos.append(lista_productos["otrosProductos"][0]["existencia"])
+                    cant_max_combos.sort()
+                    #Remplaza el valor en existencia del combo con la cantidad del producto con menor exintencia.
+                    lista_productos["combo"][0]["existencia"] = cant_max_combos[0]
+                    
+                    with open(file_path,'w') as file:
+                        json.dump(lista_productos, file ,indent=4)               
+                    #Existencia de combos actualizada.
+
                     print("\n**** --Lista de Productos-- ****")
                     for categoria, productos in lista_productos.items():
                         
