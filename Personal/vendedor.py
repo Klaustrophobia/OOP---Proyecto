@@ -23,21 +23,21 @@ class Login_Vendedor():
     def verificar_credenciales(numEmpleado, password, vendedor):
         for u in vendedor:
             if u["numEmpleado"] == numEmpleado and u["password"] == password :
-                print(f'Inicio de sesión exitoso para {u["nombre"]}')
+                print(f'\n--Inicio de sesión exitoso. Bienvenido {u["nombre"]}.--')
                 return True 
         return False   
 
     def login(self): 
         vendedor = Login_Vendedor.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
+        print("\n**** --Login de Vendedor-- ****")
         numEmpleado = input("Numero de Empleado: ")
         password = getpass.getpass("Contrasena: ")
 
         if Login_Vendedor.verificar_credenciales(numEmpleado, password, vendedor):
             Menu.menu(self)
         else:
-            print("Credenciales incorrectas. Inténtelo de nuevo.")
+            print("\n--Credenciales incorrectas. Inténtelo de nuevo.--")
             return False
-
 
 class Vendedor(Personal):
     def __init__(self, metas_ventas, ventas_netas, num_empleado, salario, nombre, apellido, identidad, telefono, correo):
@@ -50,21 +50,23 @@ class Vendedor(Personal):
         ordenes_pendientes = OrdenCompra.obtener_ordenes_pendientes()
 
         if not ordenes_pendientes:
-            print("No hay ordenes pendientes para cobrar.")
+            print("\n--No hay ordenes pendientes para cobrar.--")
             return
 
-        print("Ordenes pendientes:")
+        print("\n**** --Ordenes pendientes-- ****")
         for i, orden in enumerate(ordenes_pendientes, 1):
             print(f"{i}. Cliente: {orden.cliente.nombre} {orden.cliente.apellido}, Total: ${orden.calcular_total()}")
 
         try:
             seleccion = int(input("Seleccione el número de la orden a cobrar: "))
             orden_seleccionada = ordenes_pendientes[seleccion - 1]
-
             total = orden_seleccionada.calcular_total()
-            print(f"Cobrando ${total} a {orden_seleccionada.cliente.nombre} {orden_seleccionada.cliente.apellido}...")
-            print()
-            print(f"Cobro realizado con exito a {orden_seleccionada.cliente.nombre}")
+        except (ValueError, IndexError):
+            print("\n--Opción No Válida. Inténtelo de nuevo.--")
+        else:
+            
+            print(f"\nCobrando ${total} a {orden_seleccionada.cliente.nombre} {orden_seleccionada.cliente.apellido}...")
+            print(f"\nCobro realizado con exito a {orden_seleccionada.cliente.nombre}")
 
             # Eliminar el carrito que se pagó
             orden_seleccionada.cliente.carrito = []
@@ -78,32 +80,39 @@ class Vendedor(Personal):
 
             # Eliminar la orden de la lista de órdenes pendientes
             OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
-        except (ValueError, IndexError):
-            print("Selección no válida.")
-
 
 class Menu(): 
 
     def menu(self):
-        print("Menú de Vendedor")
-        print("1. Realizar venta")
-        print("2. Ver metas de ventas")
-        print("3. Ver ventas netas")
-        print("4. Volver al menú principal")
+        seguir = True
+        while (seguir):
+            
+            print("\n**** --Menú de Vendedor-- ****")
+            print("1. Realizar venta")
+            print("2. Ver metas de ventas")
+            print("3. Ver ventas netas")
+            print("4. Volver al menú principal")
 
-        try:
-            option = int(input("Ingrese la opción: "))
-        except ValueError:
-            print("Opción no válida, vuelva a intentar.")
-        else:
-            match option:
-                case 1:
-                    Vendedor.realizar_cobro(self)
-                case 2:                
-                    Vendedor.metas_netas(self)
-                case 3:
-                    Vendedor.ventas_netas(self)
-                case 4:
-                    return True
-                case default:
-                    print("Opción no válida.")
+            try:
+                option = int(input("Ingrese la opción: "))
+            except ValueError:
+                print("\n--Opción No Válida. Inténtelo de nuevo.--")
+            else:
+                
+                match option:
+                    
+                    case 1:
+                        Vendedor.realizar_cobro(self)
+                    
+                    case 2:                
+                        print("\n**** --Meta de ventas-- ****")
+                    
+                    case 3:
+                        print("\n**** --Ventas Netas-- ****")
+                    
+                    case 4:
+                        print("\n--Saliendo... Hasta Pronto.--")
+                        seguir = False
+                    
+                    case default:
+                        print("\n--Opción No Válida. Inténtelo de nuevo.--")
