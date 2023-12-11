@@ -24,8 +24,9 @@ class Login_Vendedor():
         for u in vendedor:
             if u["numEmpleado"] == numEmpleado and u["password"] == password :
                 print(f'\n--Inicio de sesión exitoso. Bienvenido {u["nombre"]}.--')
+                Vendedor.set_vendedor_actual(u)  # Establecer el vendedor actual
                 return True 
-        return False   
+        return False  
 
     def login(self): 
         vendedor = Login_Vendedor.cargar_credenciales()  ##Mandar a llamar al metodo estatico dentro de la clase
@@ -40,10 +41,24 @@ class Login_Vendedor():
             return False
 
 class Vendedor(Personal):
+    vendedor_actual = None  # Variable de clase para almacenar la información del vendedor actual
+
     def __init__(self, metas_ventas, ventas_netas, num_empleado, salario, nombre, apellido, identidad, telefono, correo):
         super().__init__(num_empleado, salario, nombre, apellido, identidad, telefono, correo)
         self.metas_ventas = metas_ventas
         self.ventas_netas = ventas_netas
+        
+    @classmethod
+    def set_vendedor_actual(cls, vendedor):
+        cls.vendedor_actual = vendedor
+
+    @classmethod
+    def get_vendedor_actual_metas_ventas(cls):
+        if cls.vendedor_actual:
+            return cls.vendedor_actual["metas_ventas"]
+        else:
+            print("\n--No se pudo obtener las metas de ventas.--")
+            return None
         
     def realizar_cobro(self):
        # Obtener las órdenes pendientes
@@ -80,6 +95,18 @@ class Vendedor(Personal):
 
             # Eliminar la orden de la lista de órdenes pendientes
             OrdenCompra._ordenes_pendientes.remove(orden_seleccionada)
+    
+    def metas_ventas(self): 
+        metas_ventas = Vendedor.get_vendedor_actual_metas_ventas()
+        if metas_ventas is not None:
+            print(f"\nLas metas de ventas son: ${metas_ventas}")
+        else:
+            print("\nNo hay metas de ventas disponibles.")
+
+        
+    def ventas_netas(self):
+        pass
+
 
 class Menu(): 
 
@@ -106,6 +133,7 @@ class Menu():
                     
                     case 2:                
                         print("\n**** --Meta de ventas-- ****")
+                        Vendedor.metas_ventas(self)
                     
                     case 3:
                         print("\n**** --Ventas Netas-- ****")

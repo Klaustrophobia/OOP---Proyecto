@@ -78,9 +78,6 @@
             "marca": "MarcaG1",
             "material": "Jean",
             "costo": 39.99,
-            "existencia": 19,
-            "tamano": "L",
-            "existencia_carrito": 0
         },
         {
             "codigo": "G002",
@@ -143,8 +140,5 @@
                     "temporada": "Primavera",
                     "existencia_carrito": 0
                 }
-            ],
-            "existencia_carrito": 0
-        }
-    ]
+            ]
 }
