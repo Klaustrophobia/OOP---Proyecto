@@ -5,33 +5,33 @@
             "marca": "MarcaA",
             "material": "Algod\u00c3\u00b3n",
             "costo": 25.99,
-            "existencia": 1,
+            "existencia": 20,
             "tamano": "M",
             "color": "Azul",
             "temporada": "Verano",
-            "existencia_carrito": 3
+            "existencia_carrito": 0
         },
         {
             "codigo": "C002",
             "marca": "MarcaB",
             "material": "Seda",
             "costo": 45.99,
-            "existencia": 2,
+            "existencia": 20,
             "tamano": "L",
             "color": "Rojo",
             "temporada": "Invierno",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         },
         {
             "codigo": "C003",
-            "marca": "MarcaC",
-            "material": "Poli\u00c3\u00a9ster",
-            "costo": 35.99,
-            "existencia": 2,
+            "marca": "MarcaB",
+            "material": "Poliester",
+            "costo": 30.99,
+            "existencia": 20,
             "tamano": "S",
-            "color": "Verde",
+            "color": "Negro",
             "temporada": "Primavera",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         }
     ],
     "sueter": [
@@ -40,36 +40,36 @@
             "marca": "MarcaX",
             "material": "Lana",
             "costo": 39.99,
-            "existencia": 5,
+            "existencia": 21,
             "tamano": "L",
             "estilo": "Cuello Alto",
             "espesor": "Mediano",
             "cierre": "No",
-            "existencia_carrito": 2
+            "existencia_carrito": 0
         },
         {
             "codigo": "S002",
             "marca": "MarcaY",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 6,
+            "existencia": 21,
             "tamano": "S",
             "estilo": "Cuello en V",
             "espesor": "Ligero",
             "cierre": "Si",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         },
         {
             "codigo": "S003",
             "marca": "MarcaZ",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 6,
+            "existencia": 21,
             "tamano": "XL",
             "estilo": "Cuello Redondo",
             "espesor": "Grueso",
             "cierre": "No",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         }
     ],
     "otrosProductos": [
@@ -78,34 +78,31 @@
             "marca": "MarcaG1",
             "material": "Jean",
             "costo": 39.99,
-            "existencia": 6,
-            "tamano": "L",
-            "existencia_carrito": 1
         },
         {
             "codigo": "G002",
             "marca": "MarcaG2",
             "material": "Cashmere",
             "costo": 89.99,
-            "existencia": 8,
+            "existencia": 19,
             "tamano": "S",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         },
         {
             "codigo": "G003",
             "marca": "MarcaG3",
             "material": "Alpaca",
             "costo": 55.99,
-            "existencia": 8,
+            "existencia": 19,
             "tamano": "XL",
-            "existencia_carrito": 1
+            "existencia_carrito": 0
         }
     ],
     "combo": [
         {
             "marca": "ComboEspecial",
-            "existencia": 1,
-            "costo": 150,
+            "existencia": 19,
+            "costo": 94.99,
             "productos": [
                 {
                     "Nombre": "Camisa",
@@ -113,11 +110,11 @@
                     "marca": "MarcaE1",
                     "material": "Algod\u00c3\u00b3n",
                     "costo": 59.99,
-                    "existencia": 15,
+                    "existencia": 20,
                     "tamano": "M",
                     "color": "Negro",
                     "temporada": "Oto\u00c3\u00b1o",
-                    "existencia_carrito": 3
+                    "existencia_carrito": 0
                 },
                 {
                     "Nombre": "Pantalon",
@@ -125,11 +122,11 @@
                     "marca": "MarcaE2",
                     "material": "Seda",
                     "costo": 79.99,
-                    "existencia": 10,
+                    "existencia": 20,
                     "tamano": "L",
                     "color": "Blanco",
                     "temporada": "Invierno",
-                    "existencia_carrito": 2
+                    "existencia_carrito": 0
                 },
                 {
                     "Nombre": "Sueter",
@@ -137,84 +134,11 @@
                     "marca": "MarcaE3",
                     "material": "Poli\u00c3\u00a9ster",
                     "costo": 69.99,
-                    "existencia": 12,
+                    "existencia": 20,
                     "tamano": "S",
                     "color": "Gris",
                     "temporada": "Primavera",
-                    "existencia_carrito": 4
+                    "existencia_carrito": 0
                 }
-            ],
-            "existencia_carrito": 1
-        }
-    ],
-    "zapatos": [
-        {
-            "codigo": "Z001",
-            "marca": "Nike",
-            "material": "Cuero",
-            "costo": 89.99,
-            "existencia": 5,
-            "tamano": "42",
-            "estilo": "Deportivo",
-            "color": "Negro",
-            "existencia_carrito": 1
-        },
-        {
-            "codigo": "Z002",
-            "marca": "Adidas",
-            "material": "Sint\u00c3\u00a9tico",
-            "costo": 79.99,
-            "existencia": 5,
-            "tamano": "38",
-            "estilo": "Casual",
-            "color": "Blanco",
-            "existencia_carrito": 2
-        },
-        {
-            "codigo": "Z003",
-            "marca": "Puma",
-            "material": "Malla",
-            "costo": 99.99,
-            "existencia": 8,
-            "tamano": "40",
-            "estilo": "Running",
-            "color": "Azul",
-            "existencia_carrito": 0
-        }
-    ],
-    "pantalones": [
-        {
-            "codigo": "P001",
-            "marca": "Levi's",
-            "material": "Algod\u00c3\u00b3n",
-            "costo": 49.99,
-            "existencia": 8,
-            "tamano": "M",
-            "estilo": "Casual",
-            "color": "Azul",
-            "existencia_carrito": 1
-        },
-        {
-            "codigo": "P002",
-            "marca": "Dockers",
-            "material": "Mezclilla",
-            "costo": 59.99,
-            "existencia": 9,
-            "tamano": "L",
-            "estilo": "Formal",
-            "color": "Negro",
-            "existencia_carrito": 1
-        },
-        {
-            "codigo": "P003",
-            "marca": "Tommy Hilfiger",
-            "material": "Lino",
-            "costo": 69.99,
-            "existencia": 9,
-            "tamano": "XL",
-            "estilo": "Verano",
-            "color": "Beige",
-            "existencia_carrito": 1
-        }
-    ]
+            ]
 }

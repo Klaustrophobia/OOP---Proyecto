@@ -35,7 +35,7 @@ class Login_Admin():
     @staticmethod
     def verificar_credenciales(user, password, admin):
         for u in admin:
-            if u["user"] == user and u["password"] == password :
+            if u["numEmpleado"] == user and u["password"] == password :
                 print(f'\n--Inicio de sesión exitoso. Bienvenido {u["nombre"]}.--')
                 return True 
         return False   
@@ -53,9 +53,9 @@ class Login_Admin():
             return False
 
 class Administrador(Vendedor, Comprador):
-    def __init__(self, metas_ventas, ventas_netas, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo):
-        Vendedor.__init__(self, metas_ventas, ventas_netas, num_empleado, salario, nombre, apellido, identidad, telefono, correo)
-        Comprador.__init__(self, proveedor, num_empleado, salario, nombre, apellido, identidad, telefono, correo)
+    def __init__(self, metas_ventas, ventas_netas, proveedor, num_empleado, password, salario, nombre, apellido, identidad, telefono, correo):
+        Vendedor.__init__(self, metas_ventas, ventas_netas, num_empleado, password, salario, nombre, apellido, identidad, telefono, correo)
+        Comprador.__init__(self, proveedor, num_empleado, salario, nombre, password, apellido, identidad, telefono, correo)
     
     def add_empleado(self, personal):
         
@@ -71,7 +71,7 @@ class Administrador(Vendedor, Comprador):
                 identidad = int(input("Ingrese la identidad de la persona: "))
                 telefono = int(input("Telefono: "))
                 correo = input("Correo: ")
-                numEmpleado = int(input("Numero de Empleado: "))
+                numEmpleado = input("Numero de Empleado: ")
                 password = input("Password para ingreso al sistema: ")
                 salario = int(input("Salario: "))
             except ValueError:
@@ -95,7 +95,7 @@ class Administrador(Vendedor, Comprador):
                     }
                     
                     lista_personal.append(nuevo_personal)
-                    self.actualizar_credenciales(self, "comprador", lista_personal)
+                    Login_Admin.actualizar_credenciales(self, "comprador", lista_personal)
                     seguir = False
                 
                 else:
@@ -121,7 +121,7 @@ class Administrador(Vendedor, Comprador):
                         }
                         
                         lista_personal.append(nuevo_personal)
-                        self.actualizar_credenciales(self, "vendedor", lista_personal)
+                        Login_Admin.actualizar_credenciales(self, "vendedor", lista_personal)
                         seguir = False
 
     def delete_empleado(self, personal):
@@ -150,9 +150,9 @@ class Administrador(Vendedor, Comprador):
                 empleados.pop(_option-1)
                 
                 if personal == "Comprador": 
-                    self.actualizar_credenciales(self, "comprador", empleados)
+                    Login_Admin.actualizar_credenciales(self, "comprador", empleados)
                 else:
-                    self.actualizar_credenciales(self, "vendedor", empleados)
+                    Login_Admin.actualizar_credenciales(self, "vendedor", empleados)
                 print("\n--Personal Eliminado con Éxito--")
             
             else:
@@ -190,11 +190,12 @@ class Administrador(Vendedor, Comprador):
                         "existencia": existencia,
                         "tamano": tamano,
                         "color": color,
-                        "temporada": temporada
+                        "temporada": temporada,
+                        "existencia_carrito": 0
                     }
                     
                     lista_productos["camisa"].append(nuevo_producto)
-                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    Login_Admin.actualizar_credenciales(self, "productos", lista_productos)
                     seguir = False
                 
                 elif producto == "Sueter":
@@ -212,11 +213,12 @@ class Administrador(Vendedor, Comprador):
                         "tamano": tamano,
                         "estilo": estilo,
                         "espesor": espesor,
-                        "cierre": cierre
+                        "cierre": cierre,
+                        "existencia_carrito": 0
                     }
                     
                     lista_productos["sueter"].append(nuevo_producto)
-                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    Login_Admin.actualizar_credenciales(self, "productos", lista_productos)
                     seguir = False
                 
                 else:
@@ -227,11 +229,12 @@ class Administrador(Vendedor, Comprador):
                         "material": material,
                         "costo": costo,
                         "existencia": existencia,
-                        "tamano": tamano
+                        "tamano": tamano,
+                        "existencia_carrito": 0
                     }
                     
                     lista_productos["otrosProductos"].append(nuevo_producto)
-                    self.actualizar_credenciales(self, "productos", lista_productos)
+                    Login_Admin.actualizar_credenciales(self, "productos", lista_productos)
                     seguir = False
 
     def delete_producto(self, _producto):
@@ -265,7 +268,7 @@ class Administrador(Vendedor, Comprador):
             
             if ((len(productos[item]) > 0) & (_option > 0) & (_option <= (len(productos[item])))):
                 productos[item].pop(_option-1)
-                self.actualizar_credenciales(self, "productos", productos)
+                Login_Admin.actualizar_credenciales(self, "productos", productos)
                 print("\n--producto Eliminado con Éxito--")
             
             else:

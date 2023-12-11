@@ -1,9 +1,43 @@
 {
     "users" : [
-    {
-        "user" : "admin", 
-        "nombre": "Tanako",
-        "password" : "password"
-    } 
+        {
+            "nombre": "Marcos",
+            "apellido": "Maradiaga",
+            "identidad": "0319",
+            "telefono": "12395863",
+            "correo": "mmaradiaga@gmail.com",
+            "numEmpleado": "adminm",
+            "password": "1234",
+            "salario": 16000,
+            "proveedor": "",
+            "metas_ventas": 0,
+            "ventas_netas": 0
+        },
+        {
+            "nombre": "Abner",
+            "apellido": "Escobar",
+            "identidad": "0301",
+            "telefono": "25893615",
+            "correo": "escobar@gmail.com",
+            "numEmpleado": "admina",
+            "password": "patito01",
+            "salario": 16000,
+            "proveedor": "",
+            "metas_ventas": 0,
+            "ventas_netas": 0
+        },
+        {
+            "nombre": "Kevin",
+            "apellido": "Guzman",
+            "identidad": "0801",
+            "telefono": "8341248545",
+            "correo": "josue@gmail.com",
+            "numEmpleado": "admink",
+            "password": "password",
+            "salario": 16000,
+            "proveedor": "",
+            "metas_ventas": 0,
+            "ventas_netas": 0
+        }
     ]
 }

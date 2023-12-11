@@ -19,19 +19,6 @@ class Cliente(Persona):
             with open(file_path, 'r') as file:
                 lista_productos = json.load(file)
             categorias_disponibles = list(lista_productos.keys())
-            
-            #Productos existentes que conforman el combo
-            cant_max_combos = []
-            cant_max_combos.append(lista_productos["camisa"][0]["existencia"])
-            cant_max_combos.append(lista_productos["sueter"][0]["existencia"])
-            cant_max_combos.append(lista_productos["otrosProductos"][0]["existencia"])
-            cant_max_combos.sort()
-            #Remplaza el valor en existencia del combo con la cantidad del producto con menor exintencia.
-            lista_productos["combo"][0]["existencia"] = cant_max_combos[0]
-            
-            with open(file_path,'w') as file:
-                json.dump(lista_productos, file ,indent=4)               
-            #Existencia de combos actualizada.
         
         except FileNotFoundError:
                 print("\n--No se encontró el archivo JSON de productos.--")
@@ -42,6 +29,19 @@ class Cliente(Persona):
             seguir = True        
             while (seguir):
 
+                #Productos existentes que conforman el combo
+                cant_max_combos = []
+                cant_max_combos.append(lista_productos["camisa"][0]["existencia"])
+                cant_max_combos.append(lista_productos["sueter"][0]["existencia"])
+                cant_max_combos.append(lista_productos["otrosProductos"][0]["existencia"])
+                cant_max_combos.sort()
+                #Remplaza el valor en existencia del combo con la cantidad del producto con menor exintencia.
+                lista_productos["combo"][0]["existencia"] = cant_max_combos[0]
+                
+                with open(file_path,'w') as file:
+                    json.dump(lista_productos, file ,indent=4)               
+                #Existencia de combos actualizada.
+                
                 print("\n**** --Categorias Disponibles-- ****")
                 for i, categoria in enumerate(categorias_disponibles, 1):
                     print(f"{i}. {categoria}")
@@ -92,11 +92,6 @@ class Cliente(Persona):
                                         
                                         print(f"\n--Producto añadido al carrito: {producto_seleccionado['marca']}--")
 
-                                        # Actualizar existencias en el catálogo original
-                                        #producto_original = self.lista_productos_original.get(categoria_seleccionada, {}).get(seleccion - 1)
-                                        #if producto_original is not None:
-                                            #producto_original['existencia'] -= cantidad_comprar
-
                                         # Actualizar existencias en el catálogo actual
                                         if categoria_seleccionada != "combo":
                                             lista_productos[categoria_seleccionada][seleccion-1]['existencia'] -= cantidad_comprar
@@ -139,9 +134,7 @@ class Cliente(Persona):
         print(f'Total de la compra: ${total}')
 
         select = input("\nDesea regresar al menú principal (si/no): ").lower()
-        if select == 'si':
-            Menu_Cliente.menu(self)
-        else:
+        if select != 'si':
             Cliente.enviar_carrito(self)  # Llamada a la función de enviar_carrito
 
     def enviar_carrito(self):

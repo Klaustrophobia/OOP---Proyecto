@@ -70,7 +70,7 @@ class Vendedor(Personal):
 
         print("\n**** --Ordenes pendientes-- ****")
         for i, orden in enumerate(ordenes_pendientes, 1):
-            print(f"{i}. Cliente: {orden.cliente.nombre} {orden.cliente.apellido}, Total: ${orden.calcular_total()}")
+            print(f"{i}. Cliente: {orden.cliente.nombre} {orden.cliente.apellido},Identidad: {orden.cliente.identidad}, Total: ${orden.calcular_total()}")
 
         try:
             seleccion = int(input("Seleccione el número de la orden a cobrar: "))
@@ -81,7 +81,7 @@ class Vendedor(Personal):
         else:
             
             print(f"\nCobrando ${total} a {orden_seleccionada.cliente.nombre} {orden_seleccionada.cliente.apellido}...")
-            print(f"\nCobro realizado con exito a {orden_seleccionada.cliente.nombre}")
+            print(f"Cobro realizado con exito a {orden_seleccionada.cliente.nombre}")
 
             # Eliminar el carrito que se pagó
             orden_seleccionada.cliente.carrito = []
